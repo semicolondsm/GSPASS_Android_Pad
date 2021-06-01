@@ -1,7 +1,8 @@
-package com.semicolon.gspass_android_pad
+package com.semicolon.gspass_android_pad.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.semicolon.gspass_android_pad.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
