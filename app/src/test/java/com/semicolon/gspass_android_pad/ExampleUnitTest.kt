@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.semicolon.gspass_android_pad
 
 import org.junit.Test
 

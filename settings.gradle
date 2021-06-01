@@ -1,2 +1,2 @@
-rootProject.name = "My Application"
+rootProject.name = "GSPASS_Android_Pad"
 include ':app'

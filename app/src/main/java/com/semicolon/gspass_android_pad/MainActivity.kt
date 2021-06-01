@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.semicolon.gspass_android_pad
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
