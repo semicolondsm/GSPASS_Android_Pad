@@ -12,7 +12,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val vm : MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        vm.checkLogin()
+        observeNeedLogin()
     }
 
     private fun observeNeedLogin() {
