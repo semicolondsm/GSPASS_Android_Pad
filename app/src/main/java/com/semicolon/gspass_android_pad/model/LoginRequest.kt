@@ -1,4 +1,3 @@
 package com.semicolon.gspass_android_pad.model
 
-class LoginRequest {
-}
+data class LoginRequest(val id: String, val password: String)
