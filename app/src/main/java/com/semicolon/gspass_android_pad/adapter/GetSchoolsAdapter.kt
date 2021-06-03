@@ -11,7 +11,7 @@ class GetSchoolsAdapter : RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolde
 
     private var schools = ArrayList<GetSchoolResponse>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GetSchoolsAdapter.SchoolViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SchoolViewHolder {
         val binding =
             ItemSearchSchoolBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -19,7 +19,7 @@ class GetSchoolsAdapter : RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolde
     }
 
     override fun onBindViewHolder(holder: SchoolViewHolder, position: Int) =
-        holder .bind(schools[position])
+        holder.bind(schools[position])
 
     override fun getItemCount(): Int =
         schools.size

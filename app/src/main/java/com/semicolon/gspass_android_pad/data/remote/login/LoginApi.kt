@@ -19,5 +19,5 @@ interface LoginApi {
     fun login(@Body request: LoginRequest): Single<Response<TokenResponse>>
 
     @GET("/school")
-    fun getSchools(@Query("name") name:String):Single<Response<List<GetSchoolResponse>>>
+    fun getSchools(@Query("name") name:String):Single<Response<ArrayList<GetSchoolResponse>>>
 }

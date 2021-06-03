@@ -26,6 +26,7 @@
             android:hint="학교이름을 입력해주세요"
             android:inputType="textPersonName"
             android:text="@={vm.schoolName}"
+            android:imeOptions="actionSearch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +40,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/please_choose_school"
+            android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +51,11 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/school_get_dt" />
+            app:layout_constraintTop_toBottomOf="@+id/school_get_dt"
+            app:layout_constraintVertical_bias="0.0"
+            app:schoolList="@{vm.schools}"
+            tools:listitem="@layout/item_search_school" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
