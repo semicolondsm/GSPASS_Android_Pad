@@ -11,16 +11,21 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
 
     val schoolName = MutableLiveData<String>()
 
+    private val _doneChooseSchool = MutableLiveData<Boolean>()
+    val doneChooseSchool:LiveData<Boolean> get() = _doneChooseSchool
+
     private val _schools = MutableLiveData<List<GetSchoolResponse>>()
     val schools : LiveData<List<GetSchoolResponse>> get() = _schools
 
     fun loadSchools() {
-        loginApiProvider.getSchools(schoolName.value!!).subscribe({response->
+        Log.d("검색","실행됨")
+        /*loginApiProvider.getSchools(schoolName.value!!).subscribe({response->
+            Log.d("검색","${response.raw()}")
             if(response.isSuccessful){
                 _schools.value = response.body()
             }
         }, {
             Log.e("RxDogTag",it.toString())
-        })
+        })*/
     }
 }
