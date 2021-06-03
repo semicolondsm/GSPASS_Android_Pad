@@ -12,9 +12,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
+            android:drawableStart="@drawable/ic_baseline_search_24"
             android:ems="10"
+            android:hint="학교이름을 입력해주세요"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -23,15 +25,23 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/school_title_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
             android:text="@string/please_choose_school"
             android:textSize="30sp"
+            android:gravity="center"
+            android:background="@drawable/shape_search_box"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/school_get_dt" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
