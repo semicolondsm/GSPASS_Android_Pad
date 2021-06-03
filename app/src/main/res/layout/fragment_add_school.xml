@@ -8,6 +8,9 @@
         <variable
             name="vm"
             type="com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel" />
+        <variable
+            name="adapter"
+            type="com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +59,7 @@
             app:layout_constraintTop_toBottomOf="@+id/school_get_dt"
             app:layout_constraintVertical_bias="0.0"
             app:schoolList="@{vm.schools}"
+            app:adapter = "@{adapter}"
             tools:listitem="@layout/item_search_school" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
