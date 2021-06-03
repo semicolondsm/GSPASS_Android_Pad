@@ -6,6 +6,7 @@ import com.semicolon.gspass_android_pad.model.TokenResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface LoginApi {
@@ -14,4 +15,7 @@ interface LoginApi {
 
     @POST("/teacher/login")
     fun login(@Body request: LoginRequest): Single<Response<TokenResponse>>
+
+    @POST("/refresh")
+    fun refreshToken(@Header("X-Refresh-Token")token: String): Single<Response<TokenResponse>>
 }

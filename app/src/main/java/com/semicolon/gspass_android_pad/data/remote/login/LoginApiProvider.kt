@@ -20,4 +20,8 @@ class LoginApiProvider {
     fun registerApi(request: RegisterRequest): Single<Response<TokenResponse>> = provideLoginApi().register(request)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
+
+    fun refreshApi(request: String): Single<Response<TokenResponse>> = provideLoginApi().refreshToken(request)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
 }
