@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 object BaseAdapter {
+    @JvmStatic
     @BindingAdapter("adapter")
     fun adapter(recyclerView: RecyclerView,adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>){
         val layoutManager= LinearLayoutManager(recyclerView.context)

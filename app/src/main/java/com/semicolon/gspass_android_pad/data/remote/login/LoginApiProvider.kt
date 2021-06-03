@@ -27,7 +27,7 @@ class LoginApiProvider {
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
 
-    fun getSchools(school: String): Single<Response<ArrayList<GetSchoolResponse>>> = provideLoginApi().getSchools(URLEncoder.encode(school,"utf-8"))
+    fun getSchools(school: String): Single<Response<List<GetSchoolResponse>>> = provideLoginApi().getSchools(URLEncoder.encode(school,"utf-8"))
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
 }

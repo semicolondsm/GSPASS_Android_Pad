@@ -7,9 +7,10 @@ import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 
 object AddSchoolAdapter {
+    @JvmStatic
     @BindingAdapter("schoolList")
-    fun RecyclerView.bindSchoolList(schools: LiveData<ArrayList<GetSchoolResponse>>) {
-        (adapter as GetSchoolsAdapter).setItems(schools)
+    fun bindSchoolList(recyclerView: RecyclerView,schools: LiveData<List<GetSchoolResponse>>) {
+        (recyclerView.adapter as GetSchoolsAdapter?)?.setItems(schools)
     }
 
 }

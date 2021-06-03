@@ -24,8 +24,8 @@ class GetSchoolsAdapter : RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolde
     override fun getItemCount(): Int =
         schools.size
 
-    fun setItems(schoolsList:LiveData<ArrayList<GetSchoolResponse>>){
-        this.schools = schoolsList.value!!
+    fun setItems(schoolsList:LiveData<List<GetSchoolResponse>>){
+        this.schools = (schoolsList.value as ArrayList<GetSchoolResponse>?)!!
         notifyDataSetChanged()
     }
 
