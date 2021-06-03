@@ -18,22 +18,21 @@ class MainViewModel(
     val doneToken: LiveData<Boolean> get() = _doneToken
 
     fun checkLogin() {
-        val email = sharedPreferenceStorage.getInfo("user_email")
-        val password = sharedPreferenceStorage.getInfo("user_password")
+        val refreshToken = sharedPreferenceStorage.getInfo("refresh_token")
 
-        if (email.isNotBlank() && password.isNotBlank()) {
-            doLogin(email, password)
+        if (refreshToken.isNotBlank()) {
+            doRefresh(refreshToken)
         } else {
             needToLogin.value = true
         }
     }
 
-    private fun doLogin(email: String, password: String) {
-        val request = LoginRequest(email, password)
-        loginApiProvider.loginApi(request).subscribe { response ->
+    private fun doRefresh(token: String) {
+        loginApiProvider.refreshApi(token).subscribe { response ->
             when (response.code()) {
                 200 -> {
-                    sharedPreferenceStorage.saveInfo(response.body()!!.accessToken, "token")
+                    sharedPreferenceStorage.saveInfo(response.body()!!.refreshToken,"refresh_token")
+                    sharedPreferenceStorage.saveInfo(response.body()!!.accessToken, "access_token")
                 }
                 else -> {
                     needToLogin.value = true
