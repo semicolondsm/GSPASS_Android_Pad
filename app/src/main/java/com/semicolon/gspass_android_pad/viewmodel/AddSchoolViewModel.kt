@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
+import java.net.URLEncoder
 
 class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewModel() {
 
@@ -17,15 +18,16 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     private val _schools = MutableLiveData<List<GetSchoolResponse>>()
     val schools : LiveData<List<GetSchoolResponse>> get() = _schools
 
-    fun loadSchools() {
-        Log.d("검색","실행됨")
-        /*loginApiProvider.getSchools(schoolName.value!!).subscribe({response->
-            Log.d("검색","${response.raw()}")
+    fun loadSchools(school:String) {
+        val encoder = URLEncoder.encode(school,"utf-8")
+        Log.d("검색","$encoder")
+        loginApiProvider.getSchools(encoder).subscribe({response->
+            Log.d("검색","결과:${response.body()}")
             if(response.isSuccessful){
                 _schools.value = response.body()
             }
         }, {
             Log.e("RxDogTag",it.toString())
-        })*/
+        })
     }
 }
