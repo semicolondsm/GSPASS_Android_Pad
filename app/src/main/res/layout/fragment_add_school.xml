@@ -26,7 +26,7 @@
             android:layout_marginEnd="50dp"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:ems="10"
-            android:hint="학교이름을 입력해주세요"
+            android:hint="@string/please_school_name"
             android:inputType="textPersonName"
             android:text="@={vm.schoolName}"
             android:imeOptions="actionSearch"
