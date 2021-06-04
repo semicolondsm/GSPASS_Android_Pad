@@ -48,7 +48,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     lateinit var observer: Disposable
     private fun observeInputText() {
         observer = textSource.debounce(500, TimeUnit.MILLISECONDS).subscribe {
-            vm.loadSchools(it)
+            vm.loadSchools()
         }
     }
 

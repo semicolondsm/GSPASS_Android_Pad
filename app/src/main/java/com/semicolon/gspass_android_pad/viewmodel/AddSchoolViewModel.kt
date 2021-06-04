@@ -18,8 +18,8 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     private val _schools = MutableLiveData<List<GetSchoolResponse>>()
     val schools : LiveData<List<GetSchoolResponse>> get() = _schools
 
-    fun loadSchools(school:String) {
-        val encoder = URLEncoder.encode(school,"utf-8")
+    fun loadSchools() {
+        val encoder = URLEncoder.encode(schoolName.value,"utf-8")
         Log.d("검색","$encoder")
         loginApiProvider.getSchools(encoder).subscribe({response->
             Log.d("검색","결과:${response.body()}")
