@@ -4,13 +4,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-object BaseAdapter {
-    @JvmStatic
-    @BindingAdapter("adapter")
-    fun adapter(recyclerView: RecyclerView,adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>){
-        val layoutManager= LinearLayoutManager(recyclerView.context)
-        layoutManager.orientation=RecyclerView.VERTICAL
-        recyclerView.layoutManager=layoutManager
-        recyclerView.adapter = adapter
-    }
+@BindingAdapter("adapter")
+fun RecyclerView.adapter(setAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>) {
+    val setLayoutManager = LinearLayoutManager(context)
+    setLayoutManager.orientation = RecyclerView.VERTICAL
+    layoutManager = setLayoutManager
+    adapter = setAdapter
 }

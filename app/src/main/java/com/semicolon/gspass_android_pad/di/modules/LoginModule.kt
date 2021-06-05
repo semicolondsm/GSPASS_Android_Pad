@@ -14,6 +14,4 @@ val loginModule = module {
     single { LoginApiProvider() }
 
     viewModel { LoginViewModel(get(),get()) }
-
-    viewModel { AddSchoolViewModel(get()) }
 }
