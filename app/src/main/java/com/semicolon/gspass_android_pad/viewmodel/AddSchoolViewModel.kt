@@ -30,4 +30,8 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
             }
         }
     }
+
+    fun chooseSchool(model:GetSchoolResponse){
+
+    }
 }
