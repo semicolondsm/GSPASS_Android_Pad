@@ -19,15 +19,15 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     val schools : LiveData<List<GetSchoolResponse>> get() = _schools
 
     fun loadSchools() {
-        val encoder = URLEncoder.encode(schoolName.value,"utf-8")
-        Log.d("검색","$encoder")
-        loginApiProvider.getSchools(encoder).subscribe({response->
-            Log.d("검색","결과:${response.body()}")
+        val name = schoolName.value?.replace(" ","")
+        val encoder = URLEncoder.encode(name,"utf-8")
+        Log.d("검색", encoder)
+        loginApiProvider.getSchools(encoder).subscribe{response->
+            Log.d("검색",response.raw().toString())
             if(response.isSuccessful){
                 _schools.value = response.body()
+                Log.d("검색","결과:${response.body()}")
             }
-        }, {
-            Log.e("RxDogTag",it.toString())
-        })
+        }
     }
 }

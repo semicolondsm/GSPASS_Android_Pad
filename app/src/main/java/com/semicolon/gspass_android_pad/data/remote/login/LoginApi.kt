@@ -23,5 +23,5 @@ interface LoginApi {
     fun refreshToken(@Header("X-Refresh-Token")token: String): Single<Response<TokenResponse>>
 
     @GET("/school")
-    fun getSchools(@Query("name") name:String):Single<Response<ArrayList<GetSchoolResponse>>>
+    fun getSchools(@Query("name", encoded = true) name:String):Single<Response<ArrayList<GetSchoolResponse>>>
 }
