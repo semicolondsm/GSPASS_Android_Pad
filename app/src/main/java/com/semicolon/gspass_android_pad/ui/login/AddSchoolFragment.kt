@@ -3,13 +3,11 @@ package com.semicolon.gspass_android_pad.ui.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentAddSchoolBinding
-import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable

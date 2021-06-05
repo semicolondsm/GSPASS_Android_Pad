@@ -1,6 +1,5 @@
 package com.semicolon.gspass_android_pad.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
