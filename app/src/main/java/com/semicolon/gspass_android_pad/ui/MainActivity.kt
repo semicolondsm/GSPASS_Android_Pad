@@ -32,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val addSchoolFragment = AddSchoolFragment()
 
     private fun startLogin() {
-        supportFragmentManager.beginTransaction().replace(R.id.main_container, addSchoolFragment)
+        supportFragmentManager.beginTransaction().add(R.id.main_container, addSchoolFragment)
             .commit()
     }
 }
