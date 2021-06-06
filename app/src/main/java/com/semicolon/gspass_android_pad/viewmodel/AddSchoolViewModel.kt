@@ -12,7 +12,7 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
 
     val schools = MutableLiveData<ArrayList<GetSchoolResponse>>()
 
-    val chooseSchool = MutableLiveData<GetSchoolResponse>()
+    val chooseSchool = MutableLiveData<GetSchoolResponse>(null)
 
     fun loadSchools() {
         val name = schoolName.value?.replace(" ", "")

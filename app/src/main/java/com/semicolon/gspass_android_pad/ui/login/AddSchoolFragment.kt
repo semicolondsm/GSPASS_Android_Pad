@@ -59,7 +59,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     private lateinit var observer: Disposable
     private fun observeInputText() {
         observer =
-            textSource.debounce(500, TimeUnit.MILLISECONDS).subscribeOn(Schedulers.io()).subscribe {
+            textSource.subscribeOn(Schedulers.io()).subscribe {
                 vm.loadSchools()
             }
     }
@@ -70,12 +70,15 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
 
     private fun observeChooseSchool() {
         vm.chooseSchool.observe(viewLifecycleOwner, {
-            dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
-                .setPositiveButton("네") { _, _ ->
-                    startLogin(it)
-                }.setNegativeButton("아니요") { _, _ ->
-                    Toast.makeText(context, "다시 선택해주세요", Toast.LENGTH_SHORT).show()
-                }
+            if(it!=null){
+                dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
+                    .setPositiveButton("네") { _, _ ->
+                        startLogin(it)
+                    }.setNegativeButton("아니요") { _, _ ->
+                        Toast.makeText(context, "다시 선택해주세요", Toast.LENGTH_SHORT).show()
+                    }
+                    .show()
+            }
         })
 
     }
