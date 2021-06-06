@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
@@ -26,6 +28,9 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         binding.lifecycleOwner = this
         binding.vm = vm
         binding.adapter = adapter
+        val setLayoutManager = LinearLayoutManager(context)
+        setLayoutManager.orientation = RecyclerView.VERTICAL
+        binding.schoolGetRv.layoutManager = setLayoutManager
         observeInputText()
     }
 

@@ -28,7 +28,7 @@ class GetSchoolsAdapter(private val viewModel: AddSchoolViewModel) :
 
     fun setItems(schoolsList: LiveData<ArrayList<GetSchoolResponse>>) {
         this.schools = schoolsList.value?:ArrayList()
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     inner class SchoolViewHolder(private val binding: ItemSearchSchoolBinding) :
