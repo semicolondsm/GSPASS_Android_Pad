@@ -28,7 +28,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         })
     }
 
-    private val loginFragment = LoginFragment()
     private val addSchoolFragment = AddSchoolFragment()
 
     private fun startLogin() {

@@ -12,6 +12,7 @@ import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentAddSchoolBinding
+import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
@@ -30,10 +31,10 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
-        binding.adapter = adapter
         val setLayoutManager = LinearLayoutManager(context)
         setLayoutManager.orientation = RecyclerView.VERTICAL
         binding.schoolGetRv.layoutManager = setLayoutManager
+        binding.schoolGetRv.adapter = adapter
         observeInputText()
         observeChooseSchool()
     }
@@ -71,12 +72,17 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         vm.chooseSchool.observe(viewLifecycleOwner, {
             dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
                 .setPositiveButton("네") { _, _ ->
-
+                    startLogin(it)
                 }.setNegativeButton("아니요") { _, _ ->
                     Toast.makeText(context, "다시 선택해주세요", Toast.LENGTH_SHORT).show()
                 }
         })
 
+    }
+
+    private fun startLogin(school:GetSchoolResponse){
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.main_container,LoginFragment())
     }
 
     override fun onDetach() {

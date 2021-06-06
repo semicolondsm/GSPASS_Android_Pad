@@ -1,6 +1,5 @@
 package com.semicolon.gspass_android_pad.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
@@ -13,8 +12,7 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
 
     val schools = MutableLiveData<ArrayList<GetSchoolResponse>>()
 
-    private val _chooseSchool = MutableLiveData<GetSchoolResponse>()
-    val chooseSchool: LiveData<GetSchoolResponse> get() = _chooseSchool
+    val chooseSchool = MutableLiveData<GetSchoolResponse>()
 
     fun loadSchools() {
         val name = schoolName.value?.replace(" ", "")
@@ -27,6 +25,6 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     }
 
     fun chooseSchool(model: GetSchoolResponse) {
-        _chooseSchool.value = model
+        chooseSchool.value = model
     }
 }
