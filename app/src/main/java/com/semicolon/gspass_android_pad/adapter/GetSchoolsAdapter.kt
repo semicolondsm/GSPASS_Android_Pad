@@ -6,9 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.semicolon.gspass_android_pad.databinding.ItemSearchSchoolBinding
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
+import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 
-class GetSchoolsAdapter : RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolder>() {
-
+class GetSchoolsAdapter(private val viewModel: AddSchoolViewModel) :
+    RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolder>() {
     private var schools = ArrayList<GetSchoolResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SchoolViewHolder {
@@ -24,15 +25,16 @@ class GetSchoolsAdapter : RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolde
     override fun getItemCount(): Int =
         schools.size
 
-    fun setItems(schoolsList:LiveData<ArrayList<GetSchoolResponse>>){
-        this.schools = schoolsList.value!!
-        notifyDataSetChanged()
+    fun setItems(schoolsList: LiveData<ArrayList<GetSchoolResponse>>) {
+        this.schools = schoolsList.value ?: ArrayList()
+        this.notifyDataSetChanged()
     }
 
-    class SchoolViewHolder(private val binding: ItemSearchSchoolBinding) :
+    inner class SchoolViewHolder(private val binding: ItemSearchSchoolBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(schoolMode: GetSchoolResponse) {
-            binding.model = schoolMode
+        fun bind(schoolModel: GetSchoolResponse) {
+            binding.vm = viewModel
+            binding.model = schoolModel
         }
     }
 }
