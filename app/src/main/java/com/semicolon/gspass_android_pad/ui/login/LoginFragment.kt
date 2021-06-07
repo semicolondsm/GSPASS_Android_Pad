@@ -16,5 +16,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
+        observeNeedRegister()
+    }
+
+    private fun observeNeedRegister(){
+        vm.needRegister.observe(viewLifecycleOwner,{
+            if(it){
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.setCustomAnimations(R.anim.slide_in_up,R.anim.slide_out_up)
+                    ?.replace(R.id.main_container, RegisterFragment())?.commit()
+            }
+        })
     }
 }
