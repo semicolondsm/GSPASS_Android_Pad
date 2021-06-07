@@ -11,7 +11,7 @@ import rxdogtag2.RxDogTag
 import java.util.concurrent.TimeUnit
 
 object ApiProvider {
-    private const val BASE_URL: String = "https://api.potatochips.live/"
+    private const val BASE_URL: String = "http://13.125.161.204:8080"
     private const val CONNECT_TIME_OUT: Long = 15
     private const val WRITE_TIME_OUT: Long = 15
     private const val READ_TIME_OUT: Long = 15
