@@ -29,6 +29,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
+        vm.loadSchools("")
         val setLayoutManager = LinearLayoutManager(context)
         setLayoutManager.orientation = RecyclerView.VERTICAL
         binding.schoolGetRv.layoutManager = setLayoutManager
@@ -38,11 +39,11 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     }
 
     private lateinit var observer: Disposable
-    
+
     private fun observeInputText(textView: EditText) {
         observer =
             textView.textChanges().debounce(500, TimeUnit.MILLISECONDS).subscribe {
-                vm.loadSchools()
+                vm.loadSchools(it.toString())
             }
     }
 

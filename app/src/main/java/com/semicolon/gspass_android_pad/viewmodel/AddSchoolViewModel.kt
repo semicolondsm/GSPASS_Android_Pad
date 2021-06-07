@@ -16,14 +16,12 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     private val _chooseSchool = MutableLiveData<GetSchoolResponse>()
     val chooseSchool: LiveData<GetSchoolResponse> get() = _chooseSchool
 
-    fun loadSchools() {
-        val name = schoolName.value?.replace(" ", "")
-        if (name!=null){
-            val encoder = URLEncoder.encode(name, "utf-8")
-            loginApiProvider.getSchools(encoder).subscribe { response ->
-                if (response.isSuccessful) {
-                    schools.value = (response.body() as ArrayList<GetSchoolResponse>)
-                }
+    fun loadSchools(name: String) {
+        val formName = name.replace(" ", "")
+        val encoder = URLEncoder.encode(name, "utf-8")
+        loginApiProvider.getSchools(encoder).subscribe { response ->
+            if (response.isSuccessful) {
+                schools.value = (response.body() as ArrayList<GetSchoolResponse>)
             }
         }
     }
