@@ -2,7 +2,6 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -59,7 +58,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         })
     }
 
-    private fun showDialog(school:GetSchoolResponse){
+    private fun showDialog(school: GetSchoolResponse) {
         dialog.setTitle("확인해주세요")
             .setMessage("${school.name}(이)가 맞습니까?")
             .setPositiveButton("네") { _, _ ->
@@ -71,8 +70,9 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     }
 
     private fun startLogin(school: GetSchoolResponse) {
+        vm.saveSchoolInfo(school)
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.main_container, LoginFragment())
+            ?.replace(R.id.main_container, LoginFragment())?.commit()
     }
 
     override fun onDetach() {

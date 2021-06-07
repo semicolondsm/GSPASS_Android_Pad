@@ -12,10 +12,21 @@ class MainViewModel(
 ) : ViewModel() {
     val needToLogin = MutableLiveData<Boolean>()
 
+    val needToGetSchool = MutableLiveData<Boolean>()
+
     private val _doneToken = MutableLiveData<Boolean>(false)
     val doneToken: LiveData<Boolean> get() = _doneToken
 
-    fun checkLogin() {
+    fun checkSchool(){
+        val school = sharedPreferenceStorage.getInfo("sc_code")
+        if(school.isNotBlank()){
+            checkLogin()
+        }else{
+            needToGetSchool.value = true
+        }
+    }
+
+    private fun checkLogin() {
         val refreshToken = sharedPreferenceStorage.getInfo("refresh_token")
 
         if (refreshToken.isNotBlank()) {
