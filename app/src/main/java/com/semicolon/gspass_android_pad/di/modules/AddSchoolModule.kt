@@ -7,6 +7,5 @@ import org.koin.dsl.module
 
 val addSchoolModule = module {
     viewModel { AddSchoolViewModel(get()) }
-
     single { GetSchoolsAdapter(get()) }
 }

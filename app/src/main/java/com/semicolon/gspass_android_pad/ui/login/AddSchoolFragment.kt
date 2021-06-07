@@ -16,7 +16,6 @@ import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
@@ -54,14 +53,14 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
             }
 
         })
-    }.debounce(500, TimeUnit.MILLISECONDS)
+    }
 
     private lateinit var observer: Disposable
     private fun observeInputText() {
         observer =
-            textSource.subscribeOn(Schedulers.io()).subscribe {
-                vm.loadSchools()
-            }
+            textSource.debounce(500, TimeUnit.MILLISECONDS).subscribe {
+                    vm.loadSchools()
+                }
     }
 
     private val dialog by lazy {
@@ -69,23 +68,22 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     }
 
     private fun observeChooseSchool() {
-        vm.chooseSchool.observe(viewLifecycleOwner, {
-            if(it!=null){
+        binding.vm?.chooseSchool?.observe(viewLifecycleOwner) {
+            if (it != null) {
                 dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
                     .setPositiveButton("네") { _, _ ->
                         startLogin(it)
                     }.setNegativeButton("아니요") { _, _ ->
-                        Toast.makeText(context, "다시 선택해주세요", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "학교를 다시 선택해주세요", Toast.LENGTH_SHORT).show()
                     }
                     .show()
             }
-        })
-
+        }
     }
 
-    private fun startLogin(school:GetSchoolResponse){
+    private fun startLogin(school: GetSchoolResponse) {
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.main_container,LoginFragment())
+            ?.replace(R.id.main_container, LoginFragment())
     }
 
     override fun onDetach() {

@@ -10,7 +10,6 @@ import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 
 class GetSchoolsAdapter(private val viewModel: AddSchoolViewModel) :
     RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolder>() {
-
     private var schools = ArrayList<GetSchoolResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SchoolViewHolder {
@@ -27,7 +26,7 @@ class GetSchoolsAdapter(private val viewModel: AddSchoolViewModel) :
         schools.size
 
     fun setItems(schoolsList: LiveData<ArrayList<GetSchoolResponse>>) {
-        this.schools = schoolsList.value?:ArrayList()
+        this.schools = schoolsList.value ?: ArrayList()
         this.notifyDataSetChanged()
     }
 
