@@ -18,10 +18,12 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
 
     fun loadSchools() {
         val name = schoolName.value?.replace(" ", "")
-        val encoder = URLEncoder.encode(name, "utf-8")
-        loginApiProvider.getSchools(encoder).subscribe { response ->
-            if (response.isSuccessful) {
-                schools.value = (response.body() as ArrayList<GetSchoolResponse>)
+        if (name!=null){
+            val encoder = URLEncoder.encode(name, "utf-8")
+            loginApiProvider.getSchools(encoder).subscribe { response ->
+                if (response.isSuccessful) {
+                    schools.value = (response.body() as ArrayList<GetSchoolResponse>)
+                }
             }
         }
     }

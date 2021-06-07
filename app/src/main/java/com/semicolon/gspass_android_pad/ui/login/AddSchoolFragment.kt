@@ -2,20 +2,19 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jakewharton.rxbinding4.widget.textChanges
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentAddSchoolBinding
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
@@ -34,33 +33,17 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         setLayoutManager.orientation = RecyclerView.VERTICAL
         binding.schoolGetRv.layoutManager = setLayoutManager
         binding.schoolGetRv.adapter = adapter
-        observeInputText()
+        observeInputText(binding.schoolGetEt)
         observeChooseSchool()
     }
 
-    private val textSource = Observable.create<String> {
-        binding.schoolGetEt.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                it.onNext(s.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-    }
-
     private lateinit var observer: Disposable
-    private fun observeInputText() {
+    
+    private fun observeInputText(textView: EditText) {
         observer =
-            textSource.debounce(500, TimeUnit.MILLISECONDS).subscribe {
-                    vm.loadSchools()
-                }
+            textView.textChanges().debounce(500, TimeUnit.MILLISECONDS).subscribe {
+                vm.loadSchools()
+            }
     }
 
     private val dialog by lazy {
@@ -68,7 +51,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     }
 
     private fun observeChooseSchool() {
-        binding.vm?.chooseSchool?.observe(viewLifecycleOwner) {
+        binding.vm!!.chooseSchool.observe(viewLifecycleOwner, {
             if (it != null) {
                 dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
                     .setPositiveButton("네") { _, _ ->
@@ -78,7 +61,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
                     }
                     .show()
             }
-        }
+        })
     }
 
     private fun startLogin(school: GetSchoolResponse) {

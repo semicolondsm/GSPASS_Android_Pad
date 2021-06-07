@@ -1,12 +1,10 @@
 package com.semicolon.gspass_android_pad.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
 import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
-import com.semicolon.gspass_android_pad.model.LoginRequest
 
 class MainViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
