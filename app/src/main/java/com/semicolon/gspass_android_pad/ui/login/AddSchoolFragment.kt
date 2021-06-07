@@ -2,6 +2,7 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -16,14 +17,14 @@ import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
 import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 
 class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragment_add_school) {
 
-    private val vm: AddSchoolViewModel by viewModel()
+    private val vm: AddSchoolViewModel by inject()
 
-    private val adapter: GetSchoolsAdapter by inject()
+    private lateinit var adapter: GetSchoolsAdapter
+    private lateinit var dialog: AlertDialog.Builder
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,8 +33,10 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
         vm.loadSchools("")
         val setLayoutManager = LinearLayoutManager(context)
         setLayoutManager.orientation = RecyclerView.VERTICAL
+        adapter = GetSchoolsAdapter(vm)
         binding.schoolGetRv.layoutManager = setLayoutManager
         binding.schoolGetRv.adapter = adapter
+        dialog = AlertDialog.Builder(context, R.style.myDialog)
         observeInputText(binding.schoolGetEt)
         observeChooseSchool()
     }
@@ -47,22 +50,24 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
             }
     }
 
-    private val dialog by lazy {
-        AlertDialog.Builder(activity, R.style.myDialog)
-    }
-
     private fun observeChooseSchool() {
-        binding.vm!!.chooseSchool.observe(viewLifecycleOwner, {
+        vm.chooseSchool.observe(viewLifecycleOwner, {
             if (it != null) {
-                dialog.setTitle("확인해주세요").setMessage("${it.name}(이)가 맞습니까?")
-                    .setPositiveButton("네") { _, _ ->
-                        startLogin(it)
-                    }.setNegativeButton("아니요") { _, _ ->
-                        Toast.makeText(context, "학교를 다시 선택해주세요", Toast.LENGTH_SHORT).show()
-                    }
-                    .show()
+                showDialog(it)
+
             }
         })
+    }
+
+    private fun showDialog(school:GetSchoolResponse){
+        dialog.setTitle("확인해주세요")
+            .setMessage("${school.name}(이)가 맞습니까?")
+            .setPositiveButton("네") { _, _ ->
+                startLogin(school)
+            }.setNegativeButton("아니요") { _, _ ->
+                Toast.makeText(context, "학교를 다시 선택해주세요", Toast.LENGTH_SHORT).show()
+            }
+            .show()
     }
 
     private fun startLogin(school: GetSchoolResponse) {

@@ -17,7 +17,6 @@ class AddSchoolViewModel(private val loginApiProvider: LoginApiProvider) : ViewM
     val chooseSchool: LiveData<GetSchoolResponse> get() = _chooseSchool
 
     fun loadSchools(name: String) {
-        val formName = name.replace(" ", "")
         val encoder = URLEncoder.encode(name, "utf-8")
         loginApiProvider.getSchools(encoder).subscribe { response ->
             if (response.isSuccessful) {
