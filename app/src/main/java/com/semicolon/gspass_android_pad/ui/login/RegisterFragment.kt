@@ -3,8 +3,8 @@ package com.semicolon.gspass_android_pad.ui.login
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.semicolon.gspass_android_pad.R
+import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentRegisterBinding
 import com.semicolon.gspass_android_pad.viewmodel.RegisterViewModel

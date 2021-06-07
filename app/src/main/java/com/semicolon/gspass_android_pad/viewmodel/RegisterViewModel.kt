@@ -9,23 +9,23 @@ import com.semicolon.gspass_android_pad.model.RegisterRequest
 class RegisterViewModel(private val apiProvider: LoginApiProvider) : ViewModel() {
 
     val userName = MutableLiveData<String>()
-    val nEmptyName = MutableLiveData<Boolean>(false)
+    val nEmptyName = MutableLiveData(false)
 
     val userEmail = MutableLiveData<String>()
-    val nEmptyEmail = MutableLiveData<Boolean>(false)
+    val nEmptyEmail = MutableLiveData(false)
 
     val userPassword = MutableLiveData<String>()
-    val nEmptyPassword = MutableLiveData<Boolean>(false)
+    val nEmptyPassword = MutableLiveData(false)
 
     val userPasswordCheck = MutableLiveData<String>()
-    val samePassword = MutableLiveData<Boolean>(false)
+    val samePassword = MutableLiveData(false)
 
     val doneInput = MutableLiveData<Boolean>()
 
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> get() = _toastMessage
 
-    private val _finishRegister = MutableLiveData<Boolean>(false)
+    private val _finishRegister = MutableLiveData(false)
     val finishRegister: LiveData<Boolean> get() = _finishRegister
 
     fun doRegister() {
