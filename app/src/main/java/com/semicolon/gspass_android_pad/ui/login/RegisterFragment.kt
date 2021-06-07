@@ -24,12 +24,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
     }
 
     private fun observeInputData() {
-        vm.userEmail.observe(viewLifecycleOwner, {
-            vm.nEmptyEmail.value = !it.isNullOrBlank()
-            checkDoneRegister()
-        })
-
-        vm.userName.observe(viewLifecycleOwner, {
+        vm.userId.observe(viewLifecycleOwner, {
             vm.nEmptyName.value = !it.isNullOrBlank()
             checkDoneRegister()
         })
@@ -65,7 +60,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
 
     private fun checkDoneRegister() {
         vm.doneInput.value =
-            vm.nEmptyEmail.value!! && vm.nEmptyName.value!! && vm.nEmptyPassword.value!! && vm.samePassword.value!!
+            vm.nEmptyName.value!! && vm.nEmptyPassword.value!! && vm.samePassword.value!!
     }
 
     private fun observeToast() {
