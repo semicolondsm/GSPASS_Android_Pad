@@ -9,7 +9,7 @@ class MainViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
     private val loginApiProvider: LoginApiProvider
 ) : ViewModel() {
-    val needToLogin = MutableLiveData<Boolean>()
+    val needToLogin = MutableLiveData<Boolean>(false)
 
     val needToGetSchool = MutableLiveData<Boolean>()
 
