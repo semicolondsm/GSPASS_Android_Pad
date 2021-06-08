@@ -15,13 +15,13 @@ class LoginViewModel(
     val emailDone = MutableLiveData<Boolean>(false)
 
     val userPassword = MutableLiveData<String>()
-    val passwordDone = MutableLiveData<Boolean>(false)
+    val passwordDone = MutableLiveData(false)
 
-    val needRegister = MutableLiveData<Boolean>(false)
+    val needRegister = MutableLiveData(false)
 
-    val doneInput = MutableLiveData<Boolean>(false)
+    val doneInput = MutableLiveData(false)
 
-    private val _doneLogin = MutableLiveData<Boolean>(false)
+    private val _doneLogin = MutableLiveData(false)
     val doneLogin: LiveData<Boolean> get() = _doneLogin
 
     private val _toastMessage = MutableLiveData<String>()

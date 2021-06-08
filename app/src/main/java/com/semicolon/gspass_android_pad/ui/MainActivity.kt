@@ -16,30 +16,39 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm.checkLogin()
+        vm.checkSchool()
+        observeNeedGetSchool()
         observeNeedLogin()
-        startRegister()
+    }
+
+    private fun observeNeedGetSchool(){
+        vm.needToGetSchool.observe(this, {
+            if(it){
+                startAddSchool()
+                vm.needToGetSchool.value = false
+            }
+        })
     }
 
     private fun observeNeedLogin() {
         vm.needToLogin.observe(this, {
             if (it) {
-                startAddSchool()
+                startLogin()
                 vm.needToLogin.value = false
             }
         })
     }
 
     private val addSchoolFragment = AddSchoolFragment()
-    private val registerFragment = RegisterFragment()
+    private val loginFragment = LoginFragment()
 
     private fun startAddSchool() {
         supportFragmentManager.beginTransaction().replace(R.id.main_container, addSchoolFragment)
             .commit()
     }
 
-    private fun startRegister(){
-        supportFragmentManager.beginTransaction().replace(R.id.main_container, registerFragment)
+    private fun startLogin(){
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, loginFragment)
             .commit()
     }
 }
