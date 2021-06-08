@@ -9,6 +9,11 @@ class SettingApplyViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
     private val settingApiImpl: SettingApiImpl
 ) : ViewModel() {
-    val breakFastChecked = MutableLiveData<Boolean>(false)
+    val breakFastChecked = MutableLiveData(false)
+    val launchChecked = MutableLiveData(false)
+    val dinnerChecked = MutableLiveData(false)
 
+    val doneSetting = MutableLiveData(false)
+
+    val duringTime = MutableLiveData<String>()
 }

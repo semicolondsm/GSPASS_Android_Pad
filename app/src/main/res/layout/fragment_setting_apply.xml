@@ -46,18 +46,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/setting_a_morning_cb"
+            android:id="@+id/setting_a_breakfast_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/break_fast"
             android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/morning_start_tv"
+            app:layout_constraintEnd_toStartOf="@+id/breakfast_start_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setting_a_title" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/setting_a_break_cb"
+            android:id="@+id/setting_a_launch_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -65,10 +65,10 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/launch_start_tv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setting_a_morning_cb" />
+            app:layout_constraintTop_toBottomOf="@+id/setting_a_breakfast_cb" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/setting_a_break_cb3"
+            android:id="@+id/setting_a_dinner_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -76,10 +76,10 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/dinner_start_tv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setting_a_break_cb" />
+            app:layout_constraintTop_toBottomOf="@+id/setting_a_launch_cb" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/morning_start_tv"
+            android:id="@+id/breakfast_start_tv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -88,10 +88,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/setting_a_morning_cb"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_breakfast_cb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/setting_a_morning_cb"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_breakfast_cb"
             tools:text="11시56분00초" />
 
         <TextView
@@ -116,10 +116,10 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/setting_a_break_cb"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_launch_cb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/setting_a_break_cb"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_launch_cb"
             tools:text="12시13분23초" />
 
         <TextView
@@ -133,24 +133,39 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             app:drawableEndCompat="@drawable/ic_baseline_edit_24"
-            app:layout_constraintBottom_toBottomOf="@+id/setting_a_break_cb3"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_dinner_cb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/setting_a_break_cb3"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_dinner_cb"
             tools:text="12시13분23초" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/during_time_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="50dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="신청받을 시간"
+            android:hint="몇분동안 신청받나요?"
+            android:inputType="time"
+            android:text="@={vm.duringTime}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dinner_start_tv" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setting_apply_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@{vm.doneSetting?@drawable/shape_border_purple:@drawable/shape_border_gray}"
+            android:padding="10dp"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/signup_top_gl" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
