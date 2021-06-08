@@ -12,7 +12,7 @@ class LoginViewModel(
     private val apiProvider: LoginApiProvider
 ) : ViewModel() {
     val userId = MutableLiveData<String>()
-    val emailDone = MutableLiveData<Boolean>(false)
+    val emailDone = MutableLiveData(false)
 
     val userPassword = MutableLiveData<String>()
     val passwordDone = MutableLiveData(false)

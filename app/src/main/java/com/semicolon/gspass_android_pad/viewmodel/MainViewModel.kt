@@ -15,11 +15,11 @@ class MainViewModel(
 
     val doneToken = MutableLiveData(false)
 
-    fun checkSchool(){
+    fun checkSchool() {
         val school = sharedPreferenceStorage.getInfo("sc_code")
-        if(school.isNotBlank()){
+        if (school.isNotBlank()) {
             checkLogin()
-        }else{
+        } else {
             needToGetSchool.value = true
         }
     }
@@ -38,14 +38,17 @@ class MainViewModel(
         loginApiProvider.refreshApi(token).subscribe { response ->
             when (response.code()) {
                 200 -> {
-                    sharedPreferenceStorage.saveInfo(response.body()!!.refreshToken,"refresh_token")
+                    sharedPreferenceStorage.saveInfo(
+                        response.body()!!.refreshToken,
+                        "refresh_token"
+                    )
                     sharedPreferenceStorage.saveInfo(response.body()!!.accessToken, "access_token")
+                    doneToken.value = true
                 }
                 else -> {
                     needToLogin.value = true
                 }
             }
-            _doneToken.value = true
         }
     }
 
