@@ -3,11 +3,11 @@ package com.semicolon.gspass_android_pad.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
-import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
+import com.semicolon.gspass_android_pad.data.remote.login.LoginApiImpl
 
 class MainViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
-    private val loginApiProvider: LoginApiProvider
+    private val loginApiImpl: LoginApiImpl
 ) : ViewModel() {
     val needToLogin = MutableLiveData<Boolean>(false)
 
@@ -35,7 +35,7 @@ class MainViewModel(
     }
 
     private fun doRefresh(token: String) {
-        loginApiProvider.refreshApi(token).subscribe { response ->
+        loginApiImpl.refreshApi(token).subscribe { response ->
             when (response.code()) {
                 200 -> {
                     sharedPreferenceStorage.saveInfo(
