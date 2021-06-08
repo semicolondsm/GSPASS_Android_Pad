@@ -1,6 +1,5 @@
 package com.semicolon.gspass_android_pad.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
@@ -12,10 +11,20 @@ class MainViewModel(
 ) : ViewModel() {
     val needToLogin = MutableLiveData<Boolean>()
 
-    private val _doneToken = MutableLiveData<Boolean>(false)
-    val doneToken: LiveData<Boolean> get() = _doneToken
+    val needToGetSchool = MutableLiveData<Boolean>()
 
-    fun checkLogin() {
+    val doneToken = MutableLiveData(false)
+
+    fun checkSchool(){
+        val school = sharedPreferenceStorage.getInfo("sc_code")
+        if(school.isNotBlank()){
+            checkLogin()
+        }else{
+            needToGetSchool.value = true
+        }
+    }
+
+    private fun checkLogin() {
         val refreshToken = sharedPreferenceStorage.getInfo("refresh_token")
 
         if (refreshToken.isNotBlank()) {

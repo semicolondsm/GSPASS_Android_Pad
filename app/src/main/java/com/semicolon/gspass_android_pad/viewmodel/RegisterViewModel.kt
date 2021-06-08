@@ -3,16 +3,17 @@ package com.semicolon.gspass_android_pad.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
 import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
 import com.semicolon.gspass_android_pad.model.RegisterRequest
 
-class RegisterViewModel(private val apiProvider: LoginApiProvider) : ViewModel() {
+class RegisterViewModel(
+    private val apiProvider: LoginApiProvider,
+    private val sharedPreferenceStorage: SharedPreferenceStorage
+) : ViewModel() {
 
-    val userName = MutableLiveData<String>()
+    val userId = MutableLiveData<String>()
     val nEmptyName = MutableLiveData(false)
-
-    val userEmail = MutableLiveData<String>()
-    val nEmptyEmail = MutableLiveData(false)
 
     val userPassword = MutableLiveData<String>()
     val nEmptyPassword = MutableLiveData(false)
@@ -30,21 +31,20 @@ class RegisterViewModel(private val apiProvider: LoginApiProvider) : ViewModel()
 
     fun doRegister() {
         if (doneInput.value == true) {
-            val request = RegisterRequest(userEmail.value!!, userName.value!!, userPassword.value!!)
+            val randomCode =sharedPreferenceStorage.getInfo("random_code")
+            val request =
+                RegisterRequest(userId.value!!, userPassword.value!!, randomCode)
             apiProvider.registerApi(request).subscribe({ subscribe ->
                 when (subscribe.code()) {
-                    201 -> {
+                    200 -> {
                         _toastMessage.value = "회원가입에 성공하셨습니다"
                         _finishRegister.value = true
                     }
-                    400 -> {
-                        _toastMessage.value = "입력하신 정보가 잘못되었습니다"
-                    }
-                    409 -> {
-                        _toastMessage.value = "해당 정보로 회원가입된 계정이 있습니다"
+                    else->{
+                        _toastMessage.value = "회원가입에 실패하였습니다"
                     }
                 }
-            },{
+            }, {
                 _toastMessage.value = "회원가입에 실패하였습니다"
             })
 

@@ -1,10 +1,7 @@
 package com.semicolon.gspass_android_pad.data.remote.login
 
 import com.semicolon.gspass_android_pad.data.remote.ApiProvider
-import com.semicolon.gspass_android_pad.model.GetSchoolResponse
-import com.semicolon.gspass_android_pad.model.LoginRequest
-import com.semicolon.gspass_android_pad.model.RegisterRequest
-import com.semicolon.gspass_android_pad.model.TokenResponse
+import com.semicolon.gspass_android_pad.model.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -28,6 +25,10 @@ class LoginApiProvider {
         .subscribeOn(Schedulers.io())
 
     fun getSchools(school: String): Single<Response<ArrayList<GetSchoolResponse>>> = provideLoginApi().getSchools(school)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+
+    fun postSchool(request: PostSchoolRequest): Single<Response<PostSchoolResponse>> = provideLoginApi().postSchool(request)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
 }

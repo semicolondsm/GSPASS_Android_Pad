@@ -12,34 +12,52 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private val vm: MainViewModel by viewModel()
+    val vm: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm.checkLogin()
+        vm.checkSchool()
+        observeNeedGetSchool()
         observeNeedLogin()
-        startRegister()
+        startSetting()
+    }
+
+    private fun observeNeedGetSchool() {
+        vm.needToGetSchool.observe(this, {
+            if (it) {
+                startAddSchool()
+                vm.needToGetSchool.value = false
+            }
+        })
     }
 
     private fun observeNeedLogin() {
         vm.needToLogin.observe(this, {
             if (it) {
-                startAddSchool()
+                startLogin()
                 vm.needToLogin.value = false
             }
         })
     }
 
     private val addSchoolFragment = AddSchoolFragment()
-    private val registerFragment = RegisterFragment()
+    private val loginFragment = LoginFragment()
 
     private fun startAddSchool() {
         supportFragmentManager.beginTransaction().replace(R.id.main_container, addSchoolFragment)
             .commit()
     }
 
-    private fun startRegister(){
-        supportFragmentManager.beginTransaction().replace(R.id.main_container, registerFragment)
+    private fun startLogin() {
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, loginFragment)
             .commit()
+    }
+
+    private fun startSetting() {
+        vm.doneToken.observe(this, {
+            if(it){
+
+            }
+        })
     }
 }

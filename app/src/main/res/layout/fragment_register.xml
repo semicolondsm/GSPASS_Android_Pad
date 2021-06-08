@@ -47,6 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:paddingTop="0dp"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/signup_right_gl"
             app:layout_constraintStart_toStartOf="@+id/signup_left_gl"
             app:layout_constraintTop_toBottomOf="@+id/signup_title_tv">
@@ -59,28 +61,7 @@
                 android:drawablePadding="16dp"
                 android:hint="@string/please_name"
                 android:inputType="textPersonName"
-                android:text="@={vm.userName}" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/signup_email_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingTop="0dp"
-            app:layout_constraintEnd_toStartOf="@+id/signup_right_gl"
-            app:layout_constraintStart_toStartOf="@+id/signup_left_gl"
-            app:layout_constraintTop_toBottomOf="@+id/signup_name_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_get_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_email_24"
-                android:drawablePadding="16dp"
-                android:hint="@string/please_email"
-                android:inputType="textEmailAddress"
-                android:text="@={vm.userEmail}" />
+                android:text="@={vm.userId}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,10 +71,12 @@
             android:layout_marginTop="20dp"
             android:paddingTop="0dp"
             app:errorEnabled="true"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/signup_right_gl"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/signup_left_gl"
-            app:layout_constraintTop_toBottomOf="@+id/signup_email_layout"
+            app:layout_constraintTop_toBottomOf="@+id/signup_name_layout"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -112,6 +95,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
+            app:boxBackgroundColor="@android:color/transparent"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/signup_right_gl"
             app:layout_constraintStart_toStartOf="@+id/signup_left_gl"
             app:layout_constraintTop_toBottomOf="@+id/make_password_layout">
