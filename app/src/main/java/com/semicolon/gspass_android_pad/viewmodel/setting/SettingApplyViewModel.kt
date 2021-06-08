@@ -13,7 +13,25 @@ class SettingApplyViewModel(
     val launchChecked = MutableLiveData(false)
     val dinnerChecked = MutableLiveData(false)
 
+    val breakFastTime = MutableLiveData<String>()
+    val launchTime = MutableLiveData<String>()
+    val dinnerTime = MutableLiveData<String>()
+
     val doneSetting = MutableLiveData(false)
 
     val duringTime = MutableLiveData<String>()
+
+    fun loadSettings(){
+        breakFastChecked.value = sharedPreferenceStorage.getInfo("break_fast_check",false)
+        launchChecked.value = sharedPreferenceStorage.getInfo("launch_check",false)
+        dinnerChecked.value = sharedPreferenceStorage.getInfo("dinner_check",false)
+    }
+
+    fun doneSetting(){
+        if(doneSetting.value!!){
+            sharedPreferenceStorage.saveInfo(breakFastChecked.value!!,"break_fast_check")
+            sharedPreferenceStorage.saveInfo(launchChecked.value!!,"launch_check")
+            sharedPreferenceStorage.saveInfo(dinnerChecked.value!!,"dinner_check")
+        }
+    }
 }

@@ -53,6 +53,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/break_fast"
             android:textSize="30sp"
+            android:checked="@={vm.breakFastChecked}"
             app:layout_constraintEnd_toStartOf="@+id/breakfast_start_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setting_a_title" />
@@ -64,6 +65,7 @@
             android:layout_marginTop="50dp"
             android:text="@string/launch"
             android:textSize="30sp"
+            android:checked="@={vm.launchChecked}"
             app:layout_constraintEnd_toStartOf="@+id/launch_start_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setting_a_breakfast_cb" />
@@ -75,6 +77,7 @@
             android:layout_marginTop="50dp"
             android:text="@string/dinner"
             android:textSize="30sp"
+            android:checked="@={vm.dinnerChecked}"
             app:layout_constraintEnd_toStartOf="@+id/dinner_start_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/setting_a_launch_cb" />
