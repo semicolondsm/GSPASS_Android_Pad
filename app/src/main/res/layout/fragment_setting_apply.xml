@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.semicolon.gspass_android_pad.viewmodel.setting.SettingApplyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/signup_top_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/setting_a_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/set_apply_meal"
+            android:src="@drawable/apply_setting_title"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/signup_top_gl"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/setting_a_morning_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/break_fast"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/morning_start_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_a_title" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/setting_a_break_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/launch"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/launch_start_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_a_morning_cb" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/setting_a_break_cb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/dinner"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/dinner_start_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_a_break_cb" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/morning_start_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableEnd="@drawable/ic_baseline_edit_24"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_morning_cb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_morning_cb"
+            tools:text="11시56분00초" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="몇시부터 몇분동안 신청받으실건가요?"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_title"
+            app:layout_constraintEnd_toEndOf="@+id/setting_a_title"
+            app:layout_constraintStart_toStartOf="@+id/setting_a_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/launch_start_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableEnd="@drawable/ic_baseline_edit_24"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_break_cb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_break_cb"
+            tools:text="12시13분23초" />
+
+        <TextView
+            android:id="@+id/dinner_start_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:drawableEndCompat="@drawable/ic_baseline_edit_24"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_a_break_cb3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/setting_a_break_cb3"
+            tools:text="12시13분23초" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="신청받을 시간"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dinner_start_tv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,5 +11,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="please_choose_school">학교를 선택해주세요🏫</string>
     <string name="please_school_name">학교이름을 입력해주세요</string>
+    <string name="break_fast">아침</string>
+    <string name="set_apply_meal">set apply meal</string>
+    <string name="launch">점심</string>
+    <string name="dinner">저녁</string>
 
 </resources>
