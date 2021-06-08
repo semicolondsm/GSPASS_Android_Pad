@@ -3,7 +3,7 @@
     <data>
         <variable
             name="vm"
-            type="com.semicolon.gspass_android_pad.viewmodel.SettingMealViewModel" />
+            type="com.semicolon.gspass_android_pad.viewmodel.setting.SettingMealViewModel" />
     </data>
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"

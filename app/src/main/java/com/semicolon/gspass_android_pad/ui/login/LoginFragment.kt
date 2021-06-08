@@ -7,7 +7,7 @@ import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentLoginBinding
 import com.semicolon.gspass_android_pad.ui.MainActivity
-import com.semicolon.gspass_android_pad.viewmodel.LoginViewModel
+import com.semicolon.gspass_android_pad.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {

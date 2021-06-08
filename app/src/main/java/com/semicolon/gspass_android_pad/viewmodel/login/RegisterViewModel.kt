@@ -1,4 +1,4 @@
-package com.semicolon.gspass_android_pad.viewmodel
+package com.semicolon.gspass_android_pad.viewmodel.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

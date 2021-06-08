@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.semicolon.gspass_android_pad.viewmodel.LoginViewModel" />
+            type="com.semicolon.gspass_android_pad.viewmodel.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

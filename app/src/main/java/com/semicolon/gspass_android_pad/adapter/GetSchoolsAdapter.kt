@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.semicolon.gspass_android_pad.databinding.ItemSearchSchoolBinding
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
-import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
+import com.semicolon.gspass_android_pad.viewmodel.login.AddSchoolViewModel
 
 class GetSchoolsAdapter(private val viewModel: AddSchoolViewModel) :
     RecyclerView.Adapter<GetSchoolsAdapter.SchoolViewHolder>() {

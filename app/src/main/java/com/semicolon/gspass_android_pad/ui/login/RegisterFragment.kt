@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.semicolon.gspass_android_pad.R
-import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentRegisterBinding
-import com.semicolon.gspass_android_pad.viewmodel.RegisterViewModel
+import com.semicolon.gspass_android_pad.viewmodel.login.RegisterViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment_register) {

@@ -13,7 +13,7 @@ import com.semicolon.gspass_android_pad.adapter.GetSchoolsAdapter
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentAddSchoolBinding
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
-import com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel
+import com.semicolon.gspass_android_pad.viewmodel.login.AddSchoolViewModel
 import io.reactivex.rxjava3.disposables.Disposable
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
