@@ -70,7 +70,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
     }
 
     private fun startLogin(school: GetSchoolResponse) {
-        vm.saveSchoolInfo(school)
+        vm.postSchool(school)
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(R.id.main_container, LoginFragment())?.commit()
     }

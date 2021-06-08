@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
 import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
 import com.semicolon.gspass_android_pad.model.GetSchoolResponse
+import com.semicolon.gspass_android_pad.model.PostSchoolRequest
 import java.net.URLEncoder
 
 class AddSchoolViewModel(
@@ -33,9 +34,19 @@ class AddSchoolViewModel(
         _chooseSchool.value = model
     }
 
-    fun saveSchoolInfo(model: GetSchoolResponse) {
-        sharedPreferenceStorage.saveInfo(model.scCode,"sc_code")
-        sharedPreferenceStorage.saveInfo(model.schoolCode,"school_code")
-        sharedPreferenceStorage.saveInfo(model.name,"school_name")
+    private fun saveSchoolInfo(model: GetSchoolResponse, randomCode: String) {
+        sharedPreferenceStorage.saveInfo(model.scCode, "sc_code")
+        sharedPreferenceStorage.saveInfo(model.schoolCode, "school_code")
+        sharedPreferenceStorage.saveInfo(model.name, "school_name")
+        sharedPreferenceStorage.saveInfo(randomCode, "random_code")
+    }
+
+    fun postSchool(model: GetSchoolResponse) {
+        val request = PostSchoolRequest(model.schoolCode, model.scCode, model.name)
+        loginApiProvider.postSchool(request).subscribe { response ->
+            if (response.code() == 200) {
+                saveSchoolInfo(model,response.body()!!.randomCode)
+            }
+        }
     }
 }

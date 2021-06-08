@@ -1,9 +1,6 @@
 package com.semicolon.gspass_android_pad.data.remote.login
 
-import com.semicolon.gspass_android_pad.model.GetSchoolResponse
-import com.semicolon.gspass_android_pad.model.LoginRequest
-import com.semicolon.gspass_android_pad.model.RegisterRequest
-import com.semicolon.gspass_android_pad.model.TokenResponse
+import com.semicolon.gspass_android_pad.model.*
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -24,4 +21,7 @@ interface LoginApi {
 
     @GET("/school")
     fun getSchools(@Query("name", encoded = true) name:String):Single<Response<ArrayList<GetSchoolResponse>>>
+
+    @POST("/school")
+    fun postSchool(@Body request:PostSchoolRequest):Single<Response<PostSchoolResponse>>
 }
