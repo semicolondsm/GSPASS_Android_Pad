@@ -31,9 +31,9 @@ class RegisterViewModel(
 
     fun doRegister() {
         if (doneInput.value == true) {
-            val schoolCode =sharedPreferenceStorage.getInfo("school_code")//여기에뭘 받아야 하는가
+            val randomCode =sharedPreferenceStorage.getInfo("random_code")
             val request =
-                RegisterRequest(userId.value!!, userPassword.value!!, schoolCode)
+                RegisterRequest(userId.value!!, userPassword.value!!, randomCode)
             apiProvider.registerApi(request).subscribe({ subscribe ->
                 when (subscribe.code()) {
                     200 -> {
