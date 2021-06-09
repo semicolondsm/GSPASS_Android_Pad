@@ -51,9 +51,21 @@ class SettingApplyViewModel(
 
     @SuppressLint("SimpleDateFormat")
     private fun sendSetting() {
-        val breakFast = SimpleDateFormat("HH:mm:ss").format(breakFastTime.value)
-        val launch = SimpleDateFormat("HH:mm:ss").format(launchTime.value)
-        val dinner = SimpleDateFormat("HH:mm:ss").format(dinnerTime.value)
+        val breakFast = try{
+            SimpleDateFormat("HH:mm:00").format(breakFastTime.value)
+        }catch (e:Exception){
+            null
+        }
+        val launch = try {
+            SimpleDateFormat("HH:mm:00").format(launchTime.value)
+        }catch (e:Exception){
+            null
+        }
+        val dinner = try {
+            SimpleDateFormat("HH:mm:00").format(dinnerTime.value)
+        }catch(e:Exception){
+            null
+        }
         settingApiImpl.setApplyTime(
             SetApplyTimeRequest(
                 breakfast_period = breakFast,

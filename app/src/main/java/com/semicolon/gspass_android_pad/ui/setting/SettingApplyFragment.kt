@@ -59,7 +59,7 @@ class SettingApplyFragment :
 
     private fun observeDoneInput() {
         vm.doneSetting.value =
-            vm.breakFastChecked.value!! || vm.launchChecked.value!! || vm.dinnerChecked.value!! && vm.duringTime.value.isNullOrBlank()
+            (vm.breakFastChecked.value!! || vm.launchChecked.value!! || vm.dinnerChecked.value!!) &&!vm.duringTime.value.isNullOrBlank()
     }
 
     private fun observeToast(){
@@ -96,7 +96,7 @@ class SettingApplyFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             vm.breakFastTime.value = calendar.time
-            vm.breakFastTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
+            vm.breakFastTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -106,7 +106,7 @@ class SettingApplyFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             vm.launchTime.value = calendar.time
-            vm.launchTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
+            vm.launchTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
     @SuppressLint("SimpleDateFormat")
     private val dinnerTimeDialogListener =
@@ -115,7 +115,7 @@ class SettingApplyFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             vm.dinnerTime.value = calendar.time
-            vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
+            vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
 
