@@ -49,6 +49,9 @@ class SettingApplyViewModel(
         launchTime.value = sharedPreferenceStorage.getInfo("lunch_time")
         dinnerTime.value = sharedPreferenceStorage.getInfo("dinner_time")
 
+        breakFastTimeView.value = sharedPreferenceStorage.getInfo("break_fast_view")
+        launchTimeView.value = sharedPreferenceStorage.getInfo("launch_view")
+        dinnerTimeView.value = sharedPreferenceStorage.getInfo("dinner_view")
 
     }
 
@@ -93,6 +96,10 @@ class SettingApplyViewModel(
                 sharedPreferenceStorage.saveInfo(breakFastTime.value?:"","break_fast_time")
                 sharedPreferenceStorage.saveInfo(launchTime.value?:"","lunch_time")
                 sharedPreferenceStorage.saveInfo(dinnerTime.value?:"","dinner_time")
+
+                sharedPreferenceStorage.saveInfo(breakFastTimeView.value?:"","break_fast_view")
+                sharedPreferenceStorage.saveInfo(launchTimeView.value?:"","lunch_view")
+                sharedPreferenceStorage.saveInfo(dinnerTimeView.value?:"","dinner_view")
 
             } else {
                 _toastMessage.value = "설정을 업데이트하지 못하였습니다"
