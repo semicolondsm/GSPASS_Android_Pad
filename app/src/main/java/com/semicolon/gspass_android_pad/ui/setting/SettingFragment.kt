@@ -14,6 +14,38 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = this
+        binding.vm = vm
         vm.loadSettings()
+        observeApplySetting()
+        observeMealSetting()
     }
+
+    private fun observeApplySetting(){
+        vm.startApplySetting.observe(viewLifecycleOwner,{
+            if(it){
+                startApplySetting()
+            }
+        })
+    }
+
+    private fun startApplySetting(){
+        val manager = requireActivity().supportFragmentManager
+        manager.beginTransaction().replace(R.id.main_container,SettingApplyFragment()).commit()
+    }
+
+    private fun observeMealSetting(){
+        vm.startMealSetting.observe(viewLifecycleOwner,{
+            if(it){
+                startMealSetting()
+            }
+        })
+    }
+
+    private fun startMealSetting(){
+        val manager = requireActivity().supportFragmentManager
+        manager.beginTransaction().replace(R.id.main_container,SettingMealFragment()).commit()
+    }
+
+
 }

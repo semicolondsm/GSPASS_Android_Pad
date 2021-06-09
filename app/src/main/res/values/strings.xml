@@ -2,7 +2,7 @@
     <string name="app_name">GSPASS_Android_Pad</string>
     <string name="login">로그인</string>
     <string name="signup">회원가입</string>
-    <string name="please_email">이메일을 입력해주세요</string>
+    <string name="please_email">아이디를 입력해주세요</string>
     <string name="please_password">비밀번호를 입력해주세요</string>
     <string name="please_password_again">비밀번호를 한번 더 입력해주세요</string>
     <string name="ask_need_register">아직 계정이 없으신가요?</string>

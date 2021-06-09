@@ -33,6 +33,10 @@ class SettingApplyViewModel(
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage : LiveData<String> get() = _toastMessage
 
+    val breakFastEdit = MutableLiveData(false)
+    val launchEdit = MutableLiveData(false)
+    val dinnerEdit = MutableLiveData(false)
+
     fun loadSettings() {
         breakFastChecked.value = sharedPreferenceStorage.getInfo("break_fast_check", false)
         launchChecked.value = sharedPreferenceStorage.getInfo("launch_check", false)

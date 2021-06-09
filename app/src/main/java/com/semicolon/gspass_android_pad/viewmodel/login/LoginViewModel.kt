@@ -33,9 +33,8 @@ class LoginViewModel(
             apiImpl.loginApi(request).subscribe({
                 when (it.code()) {
                     200 -> {
-                        sharedPreferenceStorage.saveInfo(userId.value!!, "user_email")
-                        sharedPreferenceStorage.saveInfo(userPassword.value!!, "user_password")
-                        sharedPreferenceStorage.saveInfo(it.body()!!.accessToken, "token")
+                        sharedPreferenceStorage.saveInfo(it.body()!!.refreshToken,"refresh_token")
+                        sharedPreferenceStorage.saveInfo(it.body()!!.accessToken, "access_token")
                         _doneLogin.value = true
                     }
                     else -> {

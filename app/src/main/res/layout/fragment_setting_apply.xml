@@ -34,6 +34,12 @@
             android:layout_height="1dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.2" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93" />
 
         <ImageView
             android:id="@+id/setting_a_title"
@@ -92,7 +98,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:visibility="@{vm.breakFastChecked?View.VISIBLE:View.INVISIBLE}"
+            android:visibility="@{vm.breakFastChecked?View.VISIBLE:View.GONE}"
             android:padding="10dp"
             android:text="@{vm.breakFastTimeView}"
             app:layout_constraintBottom_toBottomOf="@+id/setting_a_breakfast_cb"
@@ -125,21 +131,21 @@
             android:textSize="20sp"
             android:padding="10dp"
             android:text="@{vm.launchTimeView}"
-            android:visibility="@{vm.launchChecked?View.VISIBLE:View.INVISIBLE}"
+            android:visibility="@{vm.launchChecked?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/setting_a_launch_cb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/setting_a_launch_cb"
             tools:text="12시13분23초" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/dinner_start_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical"
-            android:visibility="@{vm.dinnerChecked?View.VISIBLE:View.INVISIBLE}"
+            android:visibility="@{vm.dinnerChecked?View.VISIBLE:View.GONE}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:padding="10dp"
@@ -178,7 +184,8 @@
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/signup_top_gl" />
+            app:layout_constraintStart_toStartOf="@+id/signup_top_gl"
+            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,10 +21,13 @@ class SettingApplyFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = this
+        binding.vm = vm
         vm.loadSettings()
         bindCheckBoxes()
         observeDuringTime()
         observeToast()
+        editTime()
     }
 
     private fun bindCheckBoxes() {
@@ -62,6 +65,27 @@ class SettingApplyFragment :
     private fun observeToast(){
         vm.toastMessage.observe(viewLifecycleOwner,{
             Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    private fun editTime(){
+        vm.breakFastEdit.observe(viewLifecycleOwner,{
+            if(it){
+                TimePickerDialog(activity,breakFastTimeDialogListener,8,0,false).show()
+                vm.breakFastEdit.value = false
+            }
+        })
+        vm.launchEdit.observe(viewLifecycleOwner,{
+            if(it){
+                TimePickerDialog(activity,launchTimeDialogListener,8,0,false).show()
+                vm.launchEdit.value = false
+            }
+        })
+        vm.dinnerEdit.observe(viewLifecycleOwner,{
+            if(it){
+                TimePickerDialog(activity,dinnerTimeDialogListener,8,0,false).show()
+                vm.dinnerEdit.value = false
+            }
         })
     }
 

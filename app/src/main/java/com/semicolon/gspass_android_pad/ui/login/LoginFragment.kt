@@ -58,9 +58,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private fun observeDone() {
         vm.doneLogin.observe(viewLifecycleOwner, {
-            if(it){
-                (activity as MainActivity).vm.doneToken.value = true
-            }
+            (activity as MainActivity).vm.doneToken.value = it
         })
     }
 }
