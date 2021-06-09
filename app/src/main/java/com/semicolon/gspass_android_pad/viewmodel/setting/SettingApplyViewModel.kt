@@ -54,19 +54,21 @@ class SettingApplyViewModel(
         val breakFast = try {
             SimpleDateFormat("HH:mm:00").format(breakFastTime.value)
         } catch (e: Exception) {
-            " "
+            ""
         }
         val launch = try {
             SimpleDateFormat("HH:mm:00").format(launchTime.value)
         } catch (e: Exception) {
-            " "
+            ""
         }
         val dinner = try {
             SimpleDateFormat("HH:mm:00").format(dinnerTime.value)
         } catch (e: Exception) {
-            " "
+            ""
         }
+        val accessToken = sharedPreferenceStorage.getInfo("access_token")
         settingApiImpl.setApplyTime(
+            accessToken,
             SetApplyTimeRequest(
                 breakFast,
                 launch,

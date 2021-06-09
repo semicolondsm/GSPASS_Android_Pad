@@ -11,8 +11,8 @@ class SettingApiImpl {
     private fun provideSettingApi(): SettingApi =
         ApiProvider.retroFitBuilder.create(SettingApi::class.java)
 
-    fun setApplyTime(request: SetApplyTimeRequest): Single<Response<Void>> =
-        provideSettingApi().setApplyTime(request)
+    fun setApplyTime(accessToken:String, request: SetApplyTimeRequest): Single<Response<Void>> =
+        provideSettingApi().setApplyTime(accessToken,request)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
 }
