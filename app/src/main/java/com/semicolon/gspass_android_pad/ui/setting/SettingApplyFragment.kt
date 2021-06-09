@@ -106,7 +106,7 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.launchTime.value = calendar.time.toString
+            vm.launchTime.value = calendar.time.toString()
             vm.launchTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
@@ -116,7 +116,7 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.dinnerTime.value = calendar.time.toString
+            vm.dinnerTime.value = calendar.time.toString()
             vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 

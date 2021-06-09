@@ -44,6 +44,12 @@ class SettingApplyViewModel(
         breakFastChecked.value = sharedPreferenceStorage.getInfo("break_fast_check", false)
         launchChecked.value = sharedPreferenceStorage.getInfo("launch_check", false)
         dinnerChecked.value = sharedPreferenceStorage.getInfo("dinner_check", false)
+
+        breakFastTime.value = sharedPreferenceStorage.getInfo("break_fast_time")
+        launchTime.value = sharedPreferenceStorage.getInfo("lunch_time")
+        dinnerTime.value = sharedPreferenceStorage.getInfo("dinner_time")
+
+
     }
 
     fun doneSetting() {
