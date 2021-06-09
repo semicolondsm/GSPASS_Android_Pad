@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.jakewharton.rxbinding4.widget.checkedChanges
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
@@ -23,6 +24,7 @@ class SettingApplyFragment :
         vm.loadSettings()
         bindCheckBoxes()
         observeDuringTime()
+        observeToast()
     }
 
     private fun bindCheckBoxes() {
@@ -57,13 +59,20 @@ class SettingApplyFragment :
             vm.breakFastChecked.value!! || vm.launchChecked.value!! || vm.dinnerChecked.value!! && vm.duringTime.value.isNullOrBlank()
     }
 
+    private fun observeToast(){
+        vm.toastMessage.observe(viewLifecycleOwner,{
+            Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+        })
+    }
+
     @SuppressLint("SimpleDateFormat")
     private val breakFastTimeDialogListener =
         TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.breakFastTime.value = SimpleDateFormat("HH:mm:ss").format(calendar.time)
+            vm.breakFastTime.value = calendar.time
+            vm.breakFastTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -72,7 +81,8 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.launchTime.value = SimpleDateFormat("HH:mm:ss").format(calendar.time)
+            vm.launchTime.value = calendar.time
+            vm.launchTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
         }
     @SuppressLint("SimpleDateFormat")
     private val dinnerTimeDialogListener =
@@ -80,7 +90,8 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.dinnerTime.value = SimpleDateFormat("HH:mm:ss").format(calendar.time)
+            vm.dinnerTime.value = calendar.time
+            vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분ss초").format(calendar.time)
         }
 
 
