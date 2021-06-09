@@ -28,6 +28,7 @@ class SettingApplyFragment :
         observeDuringTime()
         observeToast()
         editTime()
+        back()
     }
 
     private fun bindCheckBoxes() {
@@ -95,7 +96,7 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.breakFastTime.value = calendar.time
+            vm.breakFastTime.value = calendar.time.toString()
             vm.breakFastTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
@@ -105,7 +106,7 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.launchTime.value = calendar.time
+            vm.launchTime.value = calendar.time.toString
             vm.launchTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
@@ -115,14 +116,17 @@ class SettingApplyFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.dinnerTime.value = calendar.time
+            vm.dinnerTime.value = calendar.time.toString
             vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
 
     private fun back(){
-        val manager = requireActivity().supportFragmentManager
-        manager.beginTransaction().replace(R.id.main_container,SettingFragment()).commit()
+        vm.back.observe(viewLifecycleOwner,{
+            if(it){
+                val manager = requireActivity().supportFragmentManager
+                manager.beginTransaction().replace(R.id.main_container,SettingFragment()).commit()
+            }
+        })
     }
-
 
 }

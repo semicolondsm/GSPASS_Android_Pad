@@ -12,26 +12,28 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SettingMealFragment : BaseFragment<FragmentSettingMealBinding>(R.layout.fragment_setting_meal) {
+class SettingMealFragment :
+    BaseFragment<FragmentSettingMealBinding>(R.layout.fragment_setting_meal) {
 
-    private val vm:SettingMealViewModel by viewModel()
+    private val vm: SettingMealViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
+        vm.loadSchoolType()
+        back()
     }
 
-    private fun checkIsElementSchool(){
-       vm.gradeNumber.observe(viewLifecycleOwner,{
-
-       })
+    private fun checkIsElementSchool() {
     }
 
-    private fun back(){
-        vm.back.observe(viewLifecycleOwner,{
-            val manager = requireActivity().supportFragmentManager
-            manager.beginTransaction().replace(R.id.main_container,SettingFragment()).commit()
+    private fun back() {
+        vm.back.observe(viewLifecycleOwner, {
+            if (it) {
+                val manager = requireActivity().supportFragmentManager
+                manager.beginTransaction().replace(R.id.main_container, SettingFragment()).commit()
+            }
         })
     }
 

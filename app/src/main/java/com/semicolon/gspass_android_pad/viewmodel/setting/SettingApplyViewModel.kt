@@ -18,9 +18,9 @@ class SettingApplyViewModel(
     val launchChecked = MutableLiveData(false)
     val dinnerChecked = MutableLiveData(false)
 
-    val breakFastTime = MutableLiveData<Date>()
-    val launchTime = MutableLiveData<Date>()
-    val dinnerTime = MutableLiveData<Date>()
+    val breakFastTime = MutableLiveData<String>()
+    val launchTime = MutableLiveData<String>()
+    val dinnerTime = MutableLiveData<String>()
 
     val breakFastTimeView = MutableLiveData<String>()
     val launchTimeView = MutableLiveData<String>()
@@ -36,6 +36,9 @@ class SettingApplyViewModel(
     val breakFastEdit = MutableLiveData(false)
     val launchEdit = MutableLiveData(false)
     val dinnerEdit = MutableLiveData(false)
+
+    private val _back = MutableLiveData(false)
+    val back: LiveData<Boolean> get() = _back
 
     fun loadSettings() {
         breakFastChecked.value = sharedPreferenceStorage.getInfo("break_fast_check", false)
@@ -80,9 +83,18 @@ class SettingApplyViewModel(
                 sharedPreferenceStorage.saveInfo(breakFastChecked.value!!, "break_fast_check")
                 sharedPreferenceStorage.saveInfo(launchChecked.value!!, "launch_check")
                 sharedPreferenceStorage.saveInfo(dinnerChecked.value!!, "dinner_check")
+
+                sharedPreferenceStorage.saveInfo(breakFastTime.value?:"","break_fast_time")
+                sharedPreferenceStorage.saveInfo(launchTime.value?:"","lunch_time")
+                sharedPreferenceStorage.saveInfo(dinnerTime.value?:"","dinner_time")
+
             } else {
                 _toastMessage.value = "설정을 업데이트하지 못하였습니다"
             }
         }
+    }
+
+    fun back() {
+        _back.value = true
     }
 }
