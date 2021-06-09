@@ -31,7 +31,7 @@ class SettingApplyViewModel(
     val duringTime = MutableLiveData<String>()
 
     private val _toastMessage = MutableLiveData<String>()
-    val toastMessage : LiveData<String> get() = _toastMessage
+    val toastMessage: LiveData<String> get() = _toastMessage
 
     val breakFastEdit = MutableLiveData(false)
     val launchEdit = MutableLiveData(false)
@@ -51,34 +51,34 @@ class SettingApplyViewModel(
 
     @SuppressLint("SimpleDateFormat")
     private fun sendSetting() {
-        val breakFast = try{
+        val breakFast = try {
             SimpleDateFormat("HH:mm:00").format(breakFastTime.value)
-        }catch (e:Exception){
-            null
+        } catch (e: Exception) {
+            " "
         }
         val launch = try {
             SimpleDateFormat("HH:mm:00").format(launchTime.value)
-        }catch (e:Exception){
-            null
+        } catch (e: Exception) {
+            " "
         }
         val dinner = try {
             SimpleDateFormat("HH:mm:00").format(dinnerTime.value)
-        }catch(e:Exception){
-            null
+        } catch (e: Exception) {
+            " "
         }
         settingApiImpl.setApplyTime(
             SetApplyTimeRequest(
-                breakfast_period = breakFast,
-                launch_period = launch,
-                dinner_period = dinner,
+                breakFast,
+                launch,
+                dinner,
                 duringTime.value!!.toInt()
             )
-        ).subscribe { response->
-            if(response.code()==204){
+        ).subscribe { response ->
+            if (response.code() == 204) {
                 sharedPreferenceStorage.saveInfo(breakFastChecked.value!!, "break_fast_check")
                 sharedPreferenceStorage.saveInfo(launchChecked.value!!, "launch_check")
                 sharedPreferenceStorage.saveInfo(dinnerChecked.value!!, "dinner_check")
-            }else{
+            } else {
                 _toastMessage.value = "설정을 업데이트하지 못하였습니다"
             }
         }
