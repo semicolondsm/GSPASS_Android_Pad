@@ -14,6 +14,8 @@ class SettingMealViewModel(
     private val _gradeNumber = MutableLiveData<Int>(3)
     val gradeNumber : LiveData<Int> get() = _gradeNumber
 
+
+
     fun loadSchoolType(){
         val schoolName = sharedPreferenceStorage.getInfo("school_name")
         if(schoolName.contains("초등학교")){
