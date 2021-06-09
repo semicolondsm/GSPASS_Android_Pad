@@ -16,7 +16,7 @@ interface LoginApi {
     @POST("/teacher/login")
     fun login(@Body request: LoginRequest): Single<Response<TokenResponse>>
 
-    @POST("/refresh")
+    @POST("/teacher/refresh")
     fun refreshToken(@Header("X-Refresh-Token") token: String): Single<Response<TokenResponse>>
 
     @GET("/school")

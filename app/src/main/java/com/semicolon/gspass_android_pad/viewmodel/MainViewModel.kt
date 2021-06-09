@@ -46,6 +46,7 @@ class MainViewModel(
                     doneToken.value = true
                 }
                 else -> {
+
                     needToLogin.value = true
                 }
             }
