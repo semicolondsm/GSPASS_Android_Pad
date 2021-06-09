@@ -2,7 +2,6 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentRegisterBinding
@@ -17,7 +16,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
-        observeToast()
+        observeToast(vm.toastMessage)
         observeInputData()
         observeFinish()
     }
@@ -60,12 +59,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(R.layout.fragment
     private fun checkDoneRegister() {
         vm.doneInput.value =
             vm.nEmptyName.value!! && vm.nEmptyPassword.value!! && vm.samePassword.value!!
-    }
-
-    private fun observeToast() {
-        vm.toastMessage.observe(viewLifecycleOwner, { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-        })
     }
 
     private fun observeFinish(){

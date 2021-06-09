@@ -6,7 +6,6 @@ import com.semicolon.gspass_android_pad.base.BaseActivity
 import com.semicolon.gspass_android_pad.databinding.ActivityMainBinding
 import com.semicolon.gspass_android_pad.ui.login.AddSchoolFragment
 import com.semicolon.gspass_android_pad.ui.login.LoginFragment
-import com.semicolon.gspass_android_pad.ui.login.RegisterFragment
 import com.semicolon.gspass_android_pad.ui.setting.SettingFragment
 import com.semicolon.gspass_android_pad.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         observeNeedGetSchool()
         observeNeedLogin()
         startSetting()
+        observeToastMessage(vm.toastMessage)
     }
 
     private fun observeNeedGetSchool() {

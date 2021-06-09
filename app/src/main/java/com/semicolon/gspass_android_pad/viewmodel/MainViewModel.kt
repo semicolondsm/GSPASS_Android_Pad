@@ -1,5 +1,6 @@
 package com.semicolon.gspass_android_pad.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
@@ -14,6 +15,9 @@ class MainViewModel(
     val needToGetSchool = MutableLiveData<Boolean>()
 
     val doneToken = MutableLiveData(false)
+
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage :LiveData<String> get() = _toastMessage
 
     fun checkSchool() {
         val school = sharedPreferenceStorage.getInfo("sc_code")
@@ -46,7 +50,7 @@ class MainViewModel(
                     doneToken.value = true
                 }
                 else -> {
-
+                    _toastMessage.value = "다시 로그인 해주세요"
                     needToLogin.value = true
                 }
             }

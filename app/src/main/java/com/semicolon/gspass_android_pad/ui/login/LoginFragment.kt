@@ -2,7 +2,6 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentLoginBinding
@@ -20,7 +19,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         binding.vm = vm
         observeNeedRegister()
         observeInput()
-        observeToast()
+        observeToast(vm.toastMessage)
         observeDone()
     }
 
@@ -48,12 +47,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private fun checkDone() {
         vm.doneInput.value = vm.emailDone.value!! && vm.passwordDone.value!!
-    }
-
-    private fun observeToast() {
-        vm.toastMessage.observe(viewLifecycleOwner, {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
     }
 
     private fun observeDone() {
