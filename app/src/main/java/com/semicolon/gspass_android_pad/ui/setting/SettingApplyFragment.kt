@@ -31,21 +31,21 @@ class SettingApplyFragment :
     }
 
     private fun bindCheckBoxes() {
-        vm.breakFastChecked.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,breakFastTimeDialogListener,8,0,false).show()
+        vm.breakFastChecked.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, breakFastTimeDialogListener, 8, 0, false).show()
             }
             observeDoneInput()
         })
-        vm.launchChecked.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,launchTimeDialogListener,12,0,false).show()
+        vm.launchChecked.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, launchTimeDialogListener, 12, 0, false).show()
             }
             observeDoneInput()
         })
-        vm.dinnerChecked.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,dinnerTimeDialogListener,18,0,false).show()
+        vm.dinnerChecked.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, dinnerTimeDialogListener, 18, 0, false).show()
             }
             observeDoneInput()
         })
@@ -59,31 +59,31 @@ class SettingApplyFragment :
 
     private fun observeDoneInput() {
         vm.doneSetting.value =
-            (vm.breakFastChecked.value!! || vm.launchChecked.value!! || vm.dinnerChecked.value!!) &&!vm.duringTime.value.isNullOrBlank()
+            (vm.breakFastChecked.value!! || vm.launchChecked.value!! || vm.dinnerChecked.value!!) && !vm.duringTime.value.isNullOrBlank()
     }
 
-    private fun observeToast(){
-        vm.toastMessage.observe(viewLifecycleOwner,{
-            Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+    private fun observeToast() {
+        vm.toastMessage.observe(viewLifecycleOwner, {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
     }
 
-    private fun editTime(){
-        vm.breakFastEdit.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,breakFastTimeDialogListener,8,0,false).show()
+    private fun editTime() {
+        vm.breakFastEdit.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, breakFastTimeDialogListener, 8, 0, false).show()
                 vm.breakFastEdit.value = false
             }
         })
-        vm.launchEdit.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,launchTimeDialogListener,8,0,false).show()
+        vm.launchEdit.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, launchTimeDialogListener, 8, 0, false).show()
                 vm.launchEdit.value = false
             }
         })
-        vm.dinnerEdit.observe(viewLifecycleOwner,{
-            if(it){
-                TimePickerDialog(activity,dinnerTimeDialogListener,8,0,false).show()
+        vm.dinnerEdit.observe(viewLifecycleOwner, {
+            if (it) {
+                TimePickerDialog(activity, dinnerTimeDialogListener, 8, 0, false).show()
                 vm.dinnerEdit.value = false
             }
         })
@@ -108,6 +108,7 @@ class SettingApplyFragment :
             vm.launchTime.value = calendar.time
             vm.launchTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
+
     @SuppressLint("SimpleDateFormat")
     private val dinnerTimeDialogListener =
         TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
@@ -117,6 +118,11 @@ class SettingApplyFragment :
             vm.dinnerTime.value = calendar.time
             vm.dinnerTimeView.value = SimpleDateFormat("HH시mm분").format(calendar.time)
         }
+
+    private fun back(){
+        val manager = requireActivity().supportFragmentManager
+        manager.beginTransaction().replace(R.id.main_container,SettingFragment()).commit()
+    }
 
 
 }

@@ -28,6 +28,12 @@ class SettingMealFragment : BaseFragment<FragmentSettingMealBinding>(R.layout.fr
        })
     }
 
+    private fun back(){
+        vm.back.observe(viewLifecycleOwner,{
+            val manager = requireActivity().supportFragmentManager
+            manager.beginTransaction().replace(R.id.main_container,SettingFragment()).commit()
+        })
+    }
 
 
 }

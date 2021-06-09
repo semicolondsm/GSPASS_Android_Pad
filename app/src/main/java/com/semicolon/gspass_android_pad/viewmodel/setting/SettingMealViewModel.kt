@@ -14,12 +14,17 @@ class SettingMealViewModel(
     private val _gradeNumber = MutableLiveData<Int>(3)
     val gradeNumber : LiveData<Int> get() = _gradeNumber
 
-
+    private val _back = MutableLiveData(false)
+    val back : LiveData<Boolean> get() = _back
 
     fun loadSchoolType(){
         val schoolName = sharedPreferenceStorage.getInfo("school_name")
         if(schoolName.contains("초등학교")){
             _gradeNumber.value = 6
         }
+    }
+
+    fun backPressed(){
+        _back.value=true
     }
 }
