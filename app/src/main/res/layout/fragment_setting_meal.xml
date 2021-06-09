@@ -10,27 +10,51 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <EditText
-            android:id="@+id/grade_et"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/signup_top_gl2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline32"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline42"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline52"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/time_setting_title"
+            app:layout_constraintBottom_toTopOf="@+id/guideline42"
+            app:layout_constraintEnd_toStartOf="@+id/guideline32"
+            app:layout_constraintStart_toStartOf="@+id/signup_top_gl2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="학년: "
-            app:layout_constraintBottom_toBottomOf="@+id/grade_et"
-            app:layout_constraintEnd_toStartOf="@+id/grade_et"
-            app:layout_constraintTop_toTopOf="@+id/grade_et" />
+            android:text="TextView"
+            tools:layout_editor_absoluteX="190dp"
+            tools:layout_editor_absoluteY="202dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
