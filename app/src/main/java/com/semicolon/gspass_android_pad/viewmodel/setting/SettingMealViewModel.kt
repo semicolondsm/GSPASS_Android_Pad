@@ -11,6 +11,9 @@ class SettingMealViewModel(
     private val settingApiImpl: SettingApiImpl
 ) : ViewModel() {
 
+    private val _toastMessage = MutableLiveData<String>()
+    val toastMessage : LiveData<String> get() = _toastMessage
+
     private val _isElementSchool = MutableLiveData(true)
     val isElementSchool : LiveData<Boolean> get() = _isElementSchool
 

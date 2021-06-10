@@ -131,6 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -138,6 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -145,6 +147,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
@@ -171,6 +174,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -178,6 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -185,6 +190,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
@@ -211,6 +217,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -218,6 +225,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -225,6 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
@@ -252,6 +261,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -259,6 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -266,6 +277,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
@@ -293,6 +305,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -300,6 +313,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -307,6 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
@@ -334,6 +349,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].breakfast}"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -341,6 +357,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].lunch}"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -348,6 +365,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].dinner}"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>

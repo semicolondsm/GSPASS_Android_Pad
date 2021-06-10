@@ -22,8 +22,11 @@ class SettingMealFragment :
         binding.lifecycleOwner = this
         binding.vm = vm
         vm.loadSchoolType()
+        observeToast(vm.toastMessage)
         back()
     }
+
+
 
     private fun back() {
         vm.back.observe(viewLifecycleOwner, {
