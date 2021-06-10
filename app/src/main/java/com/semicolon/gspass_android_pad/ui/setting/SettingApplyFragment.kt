@@ -71,19 +71,19 @@ class SettingApplyFragment :
 
     private fun editTime() {
         vm.breakFastEdit.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.breakFastTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, breakFastTimeDialogListener, 8, 0, false).show()
                 vm.breakFastEdit.value = false
             }
         })
         vm.launchEdit.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.launchTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, launchTimeDialogListener, 8, 0, false).show()
                 vm.launchEdit.value = false
             }
         })
         vm.dinnerEdit.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.dinnerTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, dinnerTimeDialogListener, 8, 0, false).show()
                 vm.dinnerEdit.value = false
             }

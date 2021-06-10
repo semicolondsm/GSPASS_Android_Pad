@@ -15,5 +15,8 @@
     <string name="set_apply_meal">set apply meal</string>
     <string name="launch">점심</string>
     <string name="dinner">저녁</string>
+    <string name="how_long_take">몇분동안 신청받나요?</string>
+    <string name="complete">완료</string>
+    <string name="how_long_to_by">몇시부터 몇분동안 신청받으실건가요?</string>
 
 </resources>

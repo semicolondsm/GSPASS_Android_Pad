@@ -21,6 +21,9 @@ class AddSchoolViewModel(
     private val _chooseSchool = MutableLiveData<GetSchoolResponse>()
     val chooseSchool: LiveData<GetSchoolResponse> get() = _chooseSchool
 
+    private val _finishSchool = MutableLiveData(false)
+    val finishSchool : LiveData<Boolean> get() = _finishSchool
+
     fun loadSchools(name: String) {
         val encoder = URLEncoder.encode(name, "utf-8")
         loginApiImpl.getSchools(encoder).subscribe { response ->

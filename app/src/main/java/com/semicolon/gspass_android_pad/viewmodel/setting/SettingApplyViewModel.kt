@@ -109,6 +109,18 @@ class SettingApplyViewModel(
         }
     }
 
+    fun editBreakfast(){
+        breakFastEdit.value = true
+    }
+
+    fun editLunch(){
+        launchEdit.value = true
+    }
+
+    fun editDinner(){
+        dinnerEdit.value = true
+    }
+
     fun back() {
         _back.value = true
     }

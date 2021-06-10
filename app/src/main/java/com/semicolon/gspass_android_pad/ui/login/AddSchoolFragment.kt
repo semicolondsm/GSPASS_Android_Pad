@@ -75,6 +75,7 @@ class AddSchoolFragment : BaseFragment<FragmentAddSchoolBinding>(R.layout.fragme
             ?.replace(R.id.main_container, LoginFragment())?.commit()
     }
 
+
     override fun onDetach() {
         super.onDetach()
         observer.dispose()
