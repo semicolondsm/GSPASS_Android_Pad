@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
 import com.semicolon.gspass_android_pad.data.remote.setting.SettingApiImpl
 import com.semicolon.gspass_android_pad.model.SetApplyTimeRequest
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SettingApplyViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
@@ -63,21 +61,22 @@ class SettingApplyViewModel(
 
     @SuppressLint("SimpleDateFormat")
     private fun sendSetting() {
-        val breakFast = try {
-            SimpleDateFormat("HH:mm:00").format(breakFastTime.value)
-        } catch (e: Exception) {
-            ""
+        val breakFast:String = if (breakFastTime.value == "") {
+            "00:00:00"
+        } else {
+            breakFastTime.value!!
         }
-        val launch = try {
-            SimpleDateFormat("HH:mm:00").format(launchTime.value)
-        } catch (e: Exception) {
-            ""
+        val launch:String = if(launchTime.value == ""){
+            "00:00:00"
+        }else{
+            launchTime.value!!
         }
-        val dinner = try {
-            SimpleDateFormat("HH:mm:00").format(dinnerTime.value)
-        } catch (e: Exception) {
-            ""
+        val dinner:String = if(dinnerTime.value==""){
+            "00:00:00"
+        }else{
+            dinnerTime.value!!
         }
+
         val accessToken = sharedPreferenceStorage.getInfo("access_token")
         settingApiImpl.setApplyTime(
             accessToken,
@@ -93,14 +92,17 @@ class SettingApplyViewModel(
                 sharedPreferenceStorage.saveInfo(launchChecked.value!!, "launch_check")
                 sharedPreferenceStorage.saveInfo(dinnerChecked.value!!, "dinner_check")
 
-                sharedPreferenceStorage.saveInfo(breakFastTime.value?:"","break_fast_time")
-                sharedPreferenceStorage.saveInfo(launchTime.value?:"","lunch_time")
-                sharedPreferenceStorage.saveInfo(dinnerTime.value?:"","dinner_time")
+                sharedPreferenceStorage.saveInfo(breakFastTime.value ?: "", "break_fast_time")
+                sharedPreferenceStorage.saveInfo(launchTime.value ?: "", "lunch_time")
+                sharedPreferenceStorage.saveInfo(dinnerTime.value ?: "", "dinner_time")
 
-                sharedPreferenceStorage.saveInfo(breakFastTimeView.value?:"","break_fast_view")
-                sharedPreferenceStorage.saveInfo(launchTimeView.value?:"","lunch_view")
-                sharedPreferenceStorage.saveInfo(dinnerTimeView.value?:"","dinner_view")
+                sharedPreferenceStorage.saveInfo(breakFastTimeView.value ?: "", "break_fast_view")
+                sharedPreferenceStorage.saveInfo(launchTimeView.value ?: "", "lunch_view")
+                sharedPreferenceStorage.saveInfo(dinnerTimeView.value ?: "", "dinner_view")
 
+                _toastMessage.value = "업데이트 되었습니다"
+
+                _back.value = true
             } else {
                 _toastMessage.value = "설정을 업데이트하지 못하였습니다"
             }

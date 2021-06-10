@@ -25,9 +25,6 @@ class SettingMealFragment :
         back()
     }
 
-    private fun checkIsElementSchool() {
-    }
-
     private fun back() {
         vm.back.observe(viewLifecycleOwner, {
             if (it) {
