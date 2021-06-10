@@ -18,8 +18,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     val vm: MainViewModel by viewModel()
 
-    val qrVm : QrViewModel by viewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vm.checkSchool()
@@ -72,17 +70,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     fun startQrCode(){
-        val intent = IntentIntegrator(this)
-        intent.captureActivity = QrCodeActivity::class.java
-        intent.initiateScan()
+        val intent = Intent(this,QrCodeActivity::class.java)
+        startActivity(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            val result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data)
-            qrVm.token.value = result.contents
-
-        }
-    }
 }

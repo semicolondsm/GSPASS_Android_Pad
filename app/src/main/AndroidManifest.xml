@@ -19,12 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GSPASS_Android_Pad"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.QrCodeActivity"
-            android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation"
-            android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".ui.QrCodeActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
