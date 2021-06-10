@@ -48,8 +48,10 @@ class SettingApplyViewModel(
         dinnerTime.value = sharedPreferenceStorage.getInfo("dinner_time")
 
         breakFastTimeView.value = sharedPreferenceStorage.getInfo("break_fast_view")
-        launchTimeView.value = sharedPreferenceStorage.getInfo("launch_view")
+        launchTimeView.value = sharedPreferenceStorage.getInfo("lunch_view")
         dinnerTimeView.value = sharedPreferenceStorage.getInfo("dinner_view")
+
+        duringTime.value = sharedPreferenceStorage.getInfo("during_time")
 
     }
 

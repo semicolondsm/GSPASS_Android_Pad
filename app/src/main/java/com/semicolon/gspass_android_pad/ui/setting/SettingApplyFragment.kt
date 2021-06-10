@@ -33,19 +33,19 @@ class SettingApplyFragment :
 
     private fun bindCheckBoxes() {
         vm.breakFastChecked.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.breakFastTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, breakFastTimeDialogListener, 8, 0, false).show()
             }
             observeDoneInput()
         })
         vm.launchChecked.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.launchTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, launchTimeDialogListener, 12, 0, false).show()
             }
             observeDoneInput()
         })
         vm.dinnerChecked.observe(viewLifecycleOwner, {
-            if (it) {
+            if (it&&vm.dinnerTime.value.isNullOrBlank()) {
                 TimePickerDialog(activity, dinnerTimeDialogListener, 18, 0, false).show()
             }
             observeDoneInput()

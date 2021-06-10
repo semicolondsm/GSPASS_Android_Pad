@@ -39,6 +39,7 @@
             android:layout_marginTop="50dp"
             android:text="@string/day_meal"
             android:textSize="30sp"
+            android:textColor="@color/purple_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,6 +51,7 @@
             android:layout_marginTop="50dp"
             android:text="@string/apply_set"
             android:textSize="30sp"
+            android:textColor="@color/purple_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -128,22 +130,22 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
 
@@ -168,22 +170,22 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
 
@@ -208,22 +210,22 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
 
@@ -249,22 +251,22 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
 
@@ -290,22 +292,22 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
 
@@ -331,26 +333,85 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-                        android:padding="5dp"
                         tools:text="00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         android:padding="5dp"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/breakfast_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+            android:text="@{vm.breakfastView}"
+            app:layout_constraintBottom_toTopOf="@+id/lunch_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv"
+            tools:text="아침신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lunch_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+            android:text="@{vm.lunchView}"
+            app:layout_constraintBottom_toTopOf="@+id/dinner_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breakfast_view"
+            tools:text="점심신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dinner_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+            android:text="@{vm.dinnerView}"
+            app:layout_constraintBottom_toTopOf="@+id/during_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lunch_view"
+            tools:text="저녁신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/during_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="@{vm.duringTime}"
+            app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dinner_view"
+            tools:text="신청시간: 00분" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

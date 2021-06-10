@@ -57,20 +57,22 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline52"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline42"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:ignore="ScrollViewCount">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="5dp">
+                android:layout_marginHorizontal="5dp"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/grade_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/grade_1_v"
@@ -96,8 +98,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -115,9 +117,9 @@
                     android:id="@+id/grade_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_2_v"
@@ -134,8 +136,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         android:paddingVertical="10dp"
+                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -143,8 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -157,13 +159,14 @@
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/grade_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_3_v"
@@ -180,8 +183,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         android:paddingVertical="10dp"
+                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -189,8 +192,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -203,14 +206,15 @@
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/grade_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_4_v"
@@ -227,8 +231,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         android:paddingVertical="10dp"
+                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -250,14 +254,15 @@
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/grade_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_5_v"
@@ -274,8 +279,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         android:paddingVertical="10dp"
+                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -283,8 +288,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -293,18 +298,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/grade_6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:layout_marginVertical="10dp">
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_6_v"
@@ -321,8 +327,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         android:paddingVertical="10dp"
+                        android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -340,8 +346,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
-                        android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         android:padding="10dp"
+                        android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
             </LinearLayout>
@@ -357,6 +363,17 @@
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="각 학년의 배식시간을 설정해주세요"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/guideline32"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toEndOf="@+id/signup_top_gl2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline42" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
