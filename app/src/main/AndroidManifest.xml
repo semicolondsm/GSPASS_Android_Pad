@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.semicolon.gspass_android_pad">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".di.GsPassApplication"
@@ -14,7 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GSPASS_Android_Pad"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.QrCodeActivity"></activity>
+        <activity
+            android:name=".ui.QrCodeActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

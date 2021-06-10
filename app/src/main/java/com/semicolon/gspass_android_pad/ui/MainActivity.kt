@@ -1,6 +1,9 @@
 package com.semicolon.gspass_android_pad.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import com.google.zxing.integration.android.IntentIntegrator
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseActivity
 import com.semicolon.gspass_android_pad.databinding.ActivityMainBinding
@@ -8,11 +11,14 @@ import com.semicolon.gspass_android_pad.ui.login.AddSchoolFragment
 import com.semicolon.gspass_android_pad.ui.login.LoginFragment
 import com.semicolon.gspass_android_pad.ui.setting.SettingFragment
 import com.semicolon.gspass_android_pad.viewmodel.MainViewModel
+import com.semicolon.gspass_android_pad.viewmodel.QrViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     val vm: MainViewModel by viewModel()
+
+    val qrVm : QrViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,5 +69,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     .commit()
             }
         })
+    }
+
+    fun startQrCode(){
+        val intent = IntentIntegrator(this)
+        intent.captureActivity = QrCodeActivity::class.java
+        intent.initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            val result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data)
+            qrVm.token.value = result.contents
+
+        }
     }
 }

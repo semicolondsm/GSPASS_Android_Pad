@@ -5,6 +5,7 @@ import android.view.View
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentSettingBinding
+import com.semicolon.gspass_android_pad.ui.MainActivity
 import com.semicolon.gspass_android_pad.viewmodel.setting.SettingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,6 +20,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
         vm.loadSettings()
         observeApplySetting()
         observeMealSetting()
+        startQrCode()
     }
 
     private fun observeApplySetting(){
@@ -47,5 +49,12 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
         manager.beginTransaction().replace(R.id.main_container,SettingMealFragment()).commit()
     }
 
+    private fun startQrCode(){
+        vm.finishSetting.observe(viewLifecycleOwner,{
+            if(it){
+                (activity as MainActivity).startQrCode()
+            }
+        })
+    }
 
 }
