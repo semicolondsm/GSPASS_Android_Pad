@@ -1,12 +1,12 @@
 package com.semicolon.gspass_android_pad.di.modules
 
-import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
-import com.semicolon.gspass_android_pad.viewmodel.LoginViewModel
+import com.semicolon.gspass_android_pad.data.remote.login.LoginApiImpl
+import com.semicolon.gspass_android_pad.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val loginModule = module {
-    single { LoginApiProvider() }
+    single { LoginApiImpl() }
 
     viewModel { LoginViewModel(get(),get()) }
 }

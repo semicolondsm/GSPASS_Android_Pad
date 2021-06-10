@@ -2,12 +2,11 @@ package com.semicolon.gspass_android_pad.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentLoginBinding
 import com.semicolon.gspass_android_pad.ui.MainActivity
-import com.semicolon.gspass_android_pad.viewmodel.LoginViewModel
+import com.semicolon.gspass_android_pad.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -20,7 +19,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         binding.vm = vm
         observeNeedRegister()
         observeInput()
-        observeToast()
+        observeToast(vm.toastMessage)
         observeDone()
     }
 
@@ -50,17 +49,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         vm.doneInput.value = vm.emailDone.value!! && vm.passwordDone.value!!
     }
 
-    private fun observeToast() {
-        vm.toastMessage.observe(viewLifecycleOwner, {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
-    }
-
     private fun observeDone() {
         vm.doneLogin.observe(viewLifecycleOwner, {
-            if(it){
-                (activity as MainActivity).vm.doneToken.value = true
-            }
+            (activity as MainActivity).vm.doneToken.value = it
         })
     }
 }

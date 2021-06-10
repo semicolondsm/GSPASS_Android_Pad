@@ -8,7 +8,7 @@
             type="com.semicolon.gspass_android_pad.model.GetSchoolResponse" />
         <variable
             name="vm"
-            type="com.semicolon.gspass_android_pad.viewmodel.AddSchoolViewModel" />
+            type="com.semicolon.gspass_android_pad.viewmodel.login.AddSchoolViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:onClick="@{()->vm.chooseSchool(model)}"

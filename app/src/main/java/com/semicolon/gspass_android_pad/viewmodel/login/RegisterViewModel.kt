@@ -1,14 +1,14 @@
-package com.semicolon.gspass_android_pad.viewmodel
+package com.semicolon.gspass_android_pad.viewmodel.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
-import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
+import com.semicolon.gspass_android_pad.data.remote.login.LoginApiImpl
 import com.semicolon.gspass_android_pad.model.RegisterRequest
 
 class RegisterViewModel(
-    private val apiProvider: LoginApiProvider,
+    private val apiImpl: LoginApiImpl,
     private val sharedPreferenceStorage: SharedPreferenceStorage
 ) : ViewModel() {
 
@@ -34,7 +34,7 @@ class RegisterViewModel(
             val randomCode =sharedPreferenceStorage.getInfo("random_code")
             val request =
                 RegisterRequest(userId.value!!, userPassword.value!!, randomCode)
-            apiProvider.registerApi(request).subscribe({ subscribe ->
+            apiImpl.registerApi(request).subscribe({ subscribe ->
                 when (subscribe.code()) {
                     200 -> {
                         _toastMessage.value = "회원가입에 성공하셨습니다"

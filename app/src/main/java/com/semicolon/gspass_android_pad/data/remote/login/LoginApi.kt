@@ -16,12 +16,17 @@ interface LoginApi {
     @POST("/teacher/login")
     fun login(@Body request: LoginRequest): Single<Response<TokenResponse>>
 
-    @POST("/refresh")
-    fun refreshToken(@Header("X-Refresh-Token")token: String): Single<Response<TokenResponse>>
+    @POST("/teacher/refresh")
+    fun refreshToken(@Header("X-Refresh-Token") token: String): Single<Response<TokenResponse>>
 
     @GET("/school")
-    fun getSchools(@Query("name", encoded = true) name:String):Single<Response<ArrayList<GetSchoolResponse>>>
+    fun getSchools(
+        @Query(
+            "name",
+            encoded = true
+        ) name: String
+    ): Single<Response<ArrayList<GetSchoolResponse>>>
 
     @POST("/school")
-    fun postSchool(@Body request:PostSchoolRequest):Single<Response<PostSchoolResponse>>
+    fun postSchool(@Body request: PostSchoolRequest): Single<Response<PostSchoolResponse>>
 }

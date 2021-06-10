@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.Response
 import java.net.URLEncoder
 
-class LoginApiProvider {
+class LoginApiImpl {
     private fun provideLoginApi(): LoginApi =
         ApiProvider.retroFitBuilder.create(LoginApi::class.java)
 

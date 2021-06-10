@@ -1,18 +1,18 @@
-package com.semicolon.gspass_android_pad.viewmodel
+package com.semicolon.gspass_android_pad.viewmodel.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
-import com.semicolon.gspass_android_pad.data.remote.login.LoginApiProvider
+import com.semicolon.gspass_android_pad.data.remote.login.LoginApiImpl
 import com.semicolon.gspass_android_pad.model.LoginRequest
 
 class LoginViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
-    private val apiProvider: LoginApiProvider
+    private val apiImpl: LoginApiImpl
 ) : ViewModel() {
     val userId = MutableLiveData<String>()
-    val emailDone = MutableLiveData<Boolean>(false)
+    val emailDone = MutableLiveData(false)
 
     val userPassword = MutableLiveData<String>()
     val passwordDone = MutableLiveData(false)
@@ -30,12 +30,11 @@ class LoginViewModel(
     fun login() {
         if (doneInput.value!!) {
             val request = LoginRequest(userId.value!!, userPassword.value!!)
-            apiProvider.loginApi(request).subscribe({
+            apiImpl.loginApi(request).subscribe({
                 when (it.code()) {
                     200 -> {
-                        sharedPreferenceStorage.saveInfo(userId.value!!, "user_email")
-                        sharedPreferenceStorage.saveInfo(userPassword.value!!, "user_password")
-                        sharedPreferenceStorage.saveInfo(it.body()!!.accessToken, "token")
+                        sharedPreferenceStorage.saveInfo(it.body()!!.refreshToken,"refresh_token")
+                        sharedPreferenceStorage.saveInfo(it.body()!!.accessToken, "access_token")
                         _doneLogin.value = true
                     }
                     else -> {
