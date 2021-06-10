@@ -18,5 +18,14 @@
     <string name="how_long_take">몇분동안 신청받나요?</string>
     <string name="complete">완료</string>
     <string name="how_long_to_by">몇시부터 몇분동안 신청받으실건가요?</string>
+    <string name="start_qr">QR체크인 시작하기</string>
+    <string name="day_meal">하루 배식</string>
+    <string name="apply_set">급식 신청</string>
+    <string name="grade_1">1학년</string>
+    <string name="grade_2">2학년</string>
+    <string name="grade_3">3학년</string>
+    <string name="grade_4">4학년</string>
+    <string name="grade_5">5학년</string>
+    <string name="grade_6">6학년</string>
 
 </resources>

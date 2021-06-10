@@ -100,6 +100,8 @@ class SettingApplyViewModel(
                 sharedPreferenceStorage.saveInfo(launchTimeView.value ?: "", "lunch_view")
                 sharedPreferenceStorage.saveInfo(dinnerTimeView.value ?: "", "dinner_view")
 
+                sharedPreferenceStorage.saveInfo(duringTime.value!!,"during_time")
+
                 _toastMessage.value = "업데이트 되었습니다"
 
                 _back.value = true
