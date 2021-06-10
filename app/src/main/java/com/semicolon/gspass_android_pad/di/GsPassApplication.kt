@@ -16,7 +16,8 @@ class GsPassApplication : Application() {
                     mainModule,
                     loginModule,
                     registerModule,
-                    settingModule
+                    settingModule,
+                    qrCodeModule
                 )
             )
         }

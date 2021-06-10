@@ -35,6 +35,9 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
     private val _mealTimes = MutableLiveData<ArrayList<GradeMealData>>()
     val mealTimes: LiveData<ArrayList<GradeMealData>> get() = _mealTimes
 
+    private val _finishSetting = MutableLiveData(false)
+    val finishSetting: LiveData<Boolean> get() = _finishSetting
+
     fun loadSettings() {
         loadApplySetting()
     }
@@ -76,14 +79,16 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
     }
 
 
-
-
     fun setApply() {
         startApplySetting.value = true
     }
 
     fun setMeal() {
         startMealSetting.value = true
+    }
+
+    fun finishSetting(){
+        _finishSetting.value = true
     }
 
 }
