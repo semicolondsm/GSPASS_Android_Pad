@@ -1,3 +1,3 @@
 package com.semicolon.gspass_android_pad.model
 
-data class GradeMealData(val breakfast:String,val lunch:String,val dinner:String)
+data class GradeMealData(var breakfast:String,var lunch:String,var dinner:String)

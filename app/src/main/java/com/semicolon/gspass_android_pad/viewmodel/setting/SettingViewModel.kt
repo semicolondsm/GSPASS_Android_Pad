@@ -39,27 +39,6 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
         loadApplySetting()
     }
 
-    private fun loadMealSetting() {
-        val repeat: Int = if (isElementSchool.value!!) {
-            6
-        } else {
-            3
-        }
-        for(ct in 1..repeat){
-            val breakfastContent = "breakfast$ct"
-            val breakfast = sharedPreferenceStorage.getInfo(breakfastContent)
-
-            val lunchContent = "lunch$ct"
-            val lunch = sharedPreferenceStorage.getInfo(lunchContent)
-
-            val dinnerContent = "dinner$ct"
-            val dinner = sharedPreferenceStorage.getInfo(dinnerContent)
-
-            val gradeMeal = GradeMealData(breakfast,lunch,dinner)
-            _mealTimes.value?.set(ct, gradeMeal)
-        }
-    }
-
     private fun loadApplySetting() {
         _breakFastBool.value = sharedPreferenceStorage.getInfo("break_fast_check", false)
         _lunchBool.value = sharedPreferenceStorage.getInfo("launch_check", false)
@@ -74,6 +53,30 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
         _isElementSchool.value = sharedPreferenceStorage.getInfo("school_name").contains("초등학교")
         loadMealSetting()
     }
+
+    private fun loadMealSetting() {
+        val repeat: Int = if (isElementSchool.value!!) {
+            6
+        } else {
+            3
+        }
+        for (ct in 1..repeat) {
+            val breakfastContent = "breakfast$ct"
+            val breakfast = "아침: " + sharedPreferenceStorage.getInfo(breakfastContent)
+
+            val lunchContent = "lunch$ct"
+            val lunch = "점심: " + sharedPreferenceStorage.getInfo(lunchContent)
+
+            val dinnerContent = "dinner$ct"
+            val dinner = "저녁: " + sharedPreferenceStorage.getInfo(dinnerContent)
+
+            val gradeMeal = GradeMealData(breakfast, lunch, dinner)
+            _mealTimes.value?.set(ct, gradeMeal)
+        }
+    }
+
+
+
 
     fun setApply() {
         startApplySetting.value = true

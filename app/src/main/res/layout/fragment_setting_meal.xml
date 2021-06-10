@@ -72,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(1)}">
 
                     <TextView
                         android:id="@+id/grade_1_v"
@@ -91,6 +92,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[1].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -100,6 +102,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[1].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -110,6 +113,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[1].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
@@ -120,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(2)}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_2_v"
@@ -139,6 +144,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[2].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -148,6 +154,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[2].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -158,6 +165,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[2].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
@@ -168,7 +176,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(3)}">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_3_v"
@@ -187,6 +196,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[3].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -196,6 +206,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[3].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -206,6 +217,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[3].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
@@ -217,6 +229,7 @@
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
                     android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(4)}"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -236,6 +249,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[4].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -245,6 +259,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[4].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -255,6 +270,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[4].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
@@ -266,6 +282,7 @@
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
                     android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(5)}"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -285,6 +302,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[5].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -294,6 +312,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[5].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -304,6 +323,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[5].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>
@@ -315,6 +335,7 @@
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
                     android:orientation="vertical"
+                    android:onClick="@{()->vm.editGrade(6)}"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -334,6 +355,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:paddingVertical="10dp"
+                        android:text="@{vm.gradeMeals[6].breakfast}"
                         android:visibility="@{vm.breakFastCheck?View.VISIBLE:View.GONE}"
                         tools:text="아침: 00시00분" />
 
@@ -343,6 +365,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[6].lunch}"
                         android:visibility="@{vm.lunchCheck?View.VISIBLE:View.GONE}"
                         tools:text="점심: 00시00분" />
 
@@ -353,6 +376,7 @@
                         android:layout_marginVertical="10dp"
                         android:gravity="center"
                         android:padding="10dp"
+                        android:text="@{vm.gradeMeals[6].dinner}"
                         android:visibility="@{vm.dinnerCheck?View.VISIBLE:View.GONE}"
                         tools:text="저녁: 00시00분" />
                 </LinearLayout>

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.semicolon.gspass_android_pad.viewmodel.setting.SettingViewModel" />
@@ -38,8 +40,8 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
             android:text="@string/day_meal"
-            android:textSize="30sp"
             android:textColor="@color/purple_500"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,8 +52,8 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
             android:text="@string/apply_set"
-            android:textSize="30sp"
             android:textColor="@color/purple_500"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -376,10 +378,10 @@
             android:id="@+id/breakfast_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{vm.breakfastView}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
-            android:text="@{vm.breakfastView}"
             app:layout_constraintBottom_toTopOf="@+id/lunch_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -391,10 +393,10 @@
             android:id="@+id/lunch_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{vm.lunchView}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
-            android:text="@{vm.lunchView}"
             app:layout_constraintBottom_toTopOf="@+id/dinner_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -406,10 +408,10 @@
             android:id="@+id/dinner_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{vm.dinnerView}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
-            android:text="@{vm.dinnerView}"
             app:layout_constraintBottom_toTopOf="@+id/during_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -421,9 +423,9 @@
             android:id="@+id/during_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{vm.duringTime}"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:text="@{vm.duringTime}"
             app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

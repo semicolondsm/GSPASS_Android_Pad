@@ -21,9 +21,6 @@ class AddSchoolViewModel(
     private val _chooseSchool = MutableLiveData<GetSchoolResponse>()
     val chooseSchool: LiveData<GetSchoolResponse> get() = _chooseSchool
 
-    private val _finishSchool = MutableLiveData(false)
-    val finishSchool : LiveData<Boolean> get() = _finishSchool
-
     fun loadSchools(name: String) {
         val encoder = URLEncoder.encode(name, "utf-8")
         loginApiImpl.getSchools(encoder).subscribe { response ->
@@ -38,17 +35,17 @@ class AddSchoolViewModel(
     }
 
     private fun saveSchoolInfo(model: GetSchoolResponse, randomCode: String) {
-        sharedPreferenceStorage.saveInfo(model.scCode, "sc_code")
         sharedPreferenceStorage.saveInfo(model.schoolCode, "school_code")
         sharedPreferenceStorage.saveInfo(model.name, "school_name")
         sharedPreferenceStorage.saveInfo(randomCode, "random_code")
     }
 
     fun postSchool(model: GetSchoolResponse) {
+        sharedPreferenceStorage.saveInfo(model.scCode, "sc_code")
         val request = PostSchoolRequest(model.schoolCode, model.scCode, model.name)
         loginApiImpl.postSchool(request).subscribe { response ->
             if (response.code() == 200) {
-                saveSchoolInfo(model,response.body()!!.randomCode)
+                saveSchoolInfo(model, response.body()!!.randomCode)
             }
         }
     }
