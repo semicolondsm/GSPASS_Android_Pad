@@ -1,11 +1,13 @@
 package com.semicolon.gspass_android_pad.ui
 
+import android.content.Intent
 import android.os.Bundle
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseActivity
 import com.semicolon.gspass_android_pad.databinding.ActivityMainBinding
 import com.semicolon.gspass_android_pad.ui.login.AddSchoolFragment
 import com.semicolon.gspass_android_pad.ui.login.LoginFragment
+import com.semicolon.gspass_android_pad.ui.qr.QrCodeActivity
 import com.semicolon.gspass_android_pad.ui.setting.SettingFragment
 import com.semicolon.gspass_android_pad.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,4 +66,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         })
     }
+
+    fun startQrCode(){
+        val intent = Intent(this, QrCodeActivity::class.java)
+        startActivity(intent)
+    }
+
 }
