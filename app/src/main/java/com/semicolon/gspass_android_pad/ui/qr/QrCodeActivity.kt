@@ -38,7 +38,7 @@ class QrCodeActivity : BaseActivity<ActivityQrCodeBinding>(R.layout.activity_qr_
     private fun makeSound(){
         vm.isOnTime.observe(this,{
             if(!it){
-                val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+                val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 1000)
                 toneGen1.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT, 300)
             }
         })

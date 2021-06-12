@@ -1,10 +1,13 @@
 package com.semicolon.gspass_android_pad.data.remote.setting
 
+import com.semicolon.gspass_android_pad.model.GetSchoolInfoResponse
+import com.semicolon.gspass_android_pad.model.GetSchoolResponse
 import com.semicolon.gspass_android_pad.model.SetApplyTimeRequest
 import com.semicolon.gspass_android_pad.model.SetMealTimeRequest
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -20,4 +23,9 @@ interface SettingApi {
         @Header("Authorization") token: String,
         @Body request: SetMealTimeRequest
     ): Single<Response<Void>>
+
+    @GET("/teacher/school/information")
+    fun getSchoolInfo(
+        @Header("Authorization") token: String
+    ): Single<Response<GetSchoolInfoResponse>>
 }

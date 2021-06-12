@@ -10,7 +10,7 @@ import org.koin.dsl.module
 val settingModule = module {
     single { SettingApiImpl() }
 
-    viewModel { SettingViewModel(get()) }
+    viewModel { SettingViewModel(get(),get()) }
 
     viewModel { SettingMealViewModel(get(),get()) }
 

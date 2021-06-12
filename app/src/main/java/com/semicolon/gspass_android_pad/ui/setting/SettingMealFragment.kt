@@ -7,6 +7,7 @@ import android.view.View
 import com.semicolon.gspass_android_pad.R
 import com.semicolon.gspass_android_pad.base.BaseFragment
 import com.semicolon.gspass_android_pad.databinding.FragmentSettingMealBinding
+import com.semicolon.gspass_android_pad.model.GradeMealData
 import com.semicolon.gspass_android_pad.viewmodel.setting.SettingMealViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -71,7 +72,7 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.gradeMeals.value?.get(grade)?.breakfast =
+            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).breakfast =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
             vm.sendMealData(grade)
         }
@@ -82,7 +83,7 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.gradeMeals.value?.get(grade)?.lunch =
+            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).lunch =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
             vm.sendMealData(grade)
         }
@@ -93,7 +94,7 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            vm.gradeMeals.value?.get(grade)?.dinner =
+            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).dinner =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
             vm.sendMealData(grade)
         }

@@ -31,7 +31,7 @@ class SettingMealViewModel(
     private val _dinnerCheck = MutableLiveData(false)
     val dinnerCheck: LiveData<Boolean> get() = _dinnerCheck
 
-    val gradeMeals = MutableLiveData<ArrayList<GradeMealData>>()
+    val gradeMeals = MutableLiveData<ArrayList<GradeMealData>>(ArrayList(4))
 
     val editGrade = MutableLiveData<Int>()
 
@@ -50,6 +50,8 @@ class SettingMealViewModel(
         } else {
             3
         }
+        val gradeMeal = GradeMealData("", "", "")
+        gradeMeals.value?.add(gradeMeal)
         for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
             val breakfast = "아침: " + sharedPreferenceStorage.getInfo(breakfastContent)
@@ -61,7 +63,7 @@ class SettingMealViewModel(
             val dinner = "저녁: " + sharedPreferenceStorage.getInfo(dinnerContent)
 
             val gradeMeal = GradeMealData(breakfast, lunch, dinner)
-            gradeMeals.value?.set(ct, gradeMeal)
+            gradeMeals.value?.add(ct, gradeMeal)
         }
     }
 

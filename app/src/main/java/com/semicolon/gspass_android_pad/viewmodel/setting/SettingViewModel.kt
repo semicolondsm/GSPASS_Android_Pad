@@ -4,9 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
+import com.semicolon.gspass_android_pad.data.remote.setting.SettingApiImpl
 import com.semicolon.gspass_android_pad.model.GradeMealData
 
-class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStorage) : ViewModel() {
+class SettingViewModel(
+    private val sharedPreferenceStorage: SharedPreferenceStorage,
+    private val settingApiImpl: SettingApiImpl
+) : ViewModel() {
 
     val startApplySetting = MutableLiveData(false)
 
@@ -35,6 +39,9 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
     private val _mealTimes = MutableLiveData<ArrayList<GradeMealData>>()
     val mealTimes: LiveData<ArrayList<GradeMealData>> get() = _mealTimes
 
+    private val _schoolName = MutableLiveData<String>()
+    val schoolName: LiveData<String> get() = _schoolName
+
     private val _finishSetting = MutableLiveData(false)
     val finishSetting: LiveData<Boolean> get() = _finishSetting
 
@@ -54,7 +61,18 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
         _duringTime.value = "신청시간: " + sharedPreferenceStorage.getInfo("during_time") + "분"
 
         _isElementSchool.value = sharedPreferenceStorage.getInfo("school_name").contains("초등학교")
+
+        loadSchoolInfo()
         loadMealSetting()
+    }
+
+    private fun loadSchoolInfo() {
+        val token = sharedPreferenceStorage.getInfo("access_token")
+        settingApiImpl.getSchoolInfo(token).subscribe { response->
+            if(response.code()==200){
+                _schoolName.value = response.body()!!.school_name
+            }
+        }
     }
 
     private fun loadMealSetting() {
@@ -87,7 +105,7 @@ class SettingViewModel(private val sharedPreferenceStorage: SharedPreferenceStor
         startMealSetting.value = true
     }
 
-    fun finishSetting(){
+    fun finishSetting() {
         _finishSetting.value = true
     }
 

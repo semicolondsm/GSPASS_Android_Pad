@@ -71,7 +71,7 @@ class SettingApplyFragment :
 
     private fun editTime() {
         vm.breakFastEdit.observe(viewLifecycleOwner, {
-            if (it&&vm.breakFastTime.value.isNullOrBlank()) {
+            if (it) {
                 val timePicker = TimePickerDialog(activity, breakFastTimeDialogListener, 8, 0, false)
                 timePicker.setTitle("아침신청시간")
                 timePicker.show()
@@ -79,16 +79,16 @@ class SettingApplyFragment :
             }
         })
         vm.launchEdit.observe(viewLifecycleOwner, {
-            if (it&&vm.launchTime.value.isNullOrBlank()) {
-                val timePicker = TimePickerDialog(activity, launchTimeDialogListener, 8, 0, false)
+            if (it) {
+                val timePicker = TimePickerDialog(activity, launchTimeDialogListener, 12, 0, false)
                 timePicker.setTitle("점심신청시간")
                 timePicker.show()
                 vm.launchEdit.value = false
             }
         })
         vm.dinnerEdit.observe(viewLifecycleOwner, {
-            if (it&&vm.dinnerTime.value.isNullOrBlank()) {
-                val timePicker = TimePickerDialog(activity, dinnerTimeDialogListener, 8, 0, false)
+            if (it) {
+                val timePicker = TimePickerDialog(activity, dinnerTimeDialogListener, 18, 0, false)
                 timePicker.setTitle("저녁신청시간")
                 timePicker.show()
                 vm.dinnerEdit.value = false
