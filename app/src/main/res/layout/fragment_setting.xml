@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.semicolon.gspass_android_pad.viewmodel.setting.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setting_start_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_border_purple"
+            android:padding="20dp"
+            android:onClick="@{()->vm.finishSetting()}"
+            android:text="@string/start_qr"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/setting_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/day_meal"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/setting_apply_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/apply_set"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setting_daily_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_baseline_settings_24"
+            android:onClick="@{()->vm.setMeal()}"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setting_meal_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_baseline_settings_24"
+            android:onClick="@{()->vm.setApply()}"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_bold_box"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_time_tv">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_1"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[1].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_2"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[2].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_3"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[3].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_4"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[4].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_5"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[5].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/grade_6"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].breakfast}"
+                        android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].lunch}"
+                        android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@{vm.mealTimes[6].dinner}"
+                        android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+                        tools:text="00시00분" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/breakfast_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.breakfastView}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/lunch_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_apply_tv"
+            tools:text="아침신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lunch_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.lunchView}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/dinner_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breakfast_view"
+            tools:text="점심신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dinner_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.dinnerView}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/during_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lunch_view"
+            tools:text="저녁신청:00시00분" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/during_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.duringTime}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/setting_start_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dinner_view"
+            tools:text="신청시간: 00분" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{vm.schoolName}"
+            android:textColor="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

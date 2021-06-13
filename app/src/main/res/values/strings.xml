@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">GSPASS_Android_Pad</string>
+    <string name="login">로그인</string>
+    <string name="signup">회원가입</string>
+    <string name="please_email">아이디를 입력해주세요</string>
+    <string name="please_password">비밀번호를 입력해주세요</string>
+    <string name="please_password_again">비밀번호를 한번 더 입력해주세요</string>
+    <string name="ask_need_register">아직 계정이 없으신가요?</string>
+    <string name="please_name">아이디를 입력해주세요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_choose_school">학교를 선택해주세요🏫</string>
+    <string name="please_school_name">학교이름을 입력해주세요</string>
+    <string name="break_fast">아침</string>
+    <string name="set_apply_meal">set apply meal</string>
+    <string name="launch">점심</string>
+    <string name="dinner">저녁</string>
+    <string name="how_long_take">몇분동안 신청받나요?</string>
+    <string name="complete">완료</string>
+    <string name="how_long_to_by">몇시부터 몇분동안 신청받으실건가요?</string>
+    <string name="start_qr">QR체크인 시작하기</string>
+    <string name="day_meal">하루 배식</string>
+    <string name="apply_set">급식 신청</string>
+    <string name="grade_1">1학년</string>
+    <string name="grade_2">2학년</string>
+    <string name="grade_3">3학년</string>
+    <string name="grade_4">4학년</string>
+    <string name="grade_5">5학년</string>
+    <string name="grade_6">6학년</string>
+
 </resources>
