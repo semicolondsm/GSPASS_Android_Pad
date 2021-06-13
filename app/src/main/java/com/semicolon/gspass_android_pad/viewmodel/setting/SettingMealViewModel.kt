@@ -7,6 +7,7 @@ import com.semicolon.gspass_android_pad.data.local.SharedPreferenceStorage
 import com.semicolon.gspass_android_pad.data.remote.setting.SettingApiImpl
 import com.semicolon.gspass_android_pad.model.GradeMealData
 import com.semicolon.gspass_android_pad.model.SetMealTimeRequest
+import kotlin.properties.Delegates
 
 class SettingMealViewModel(
     private val sharedPreferenceStorage: SharedPreferenceStorage,
@@ -31,11 +32,11 @@ class SettingMealViewModel(
     private val _dinnerCheck = MutableLiveData(false)
     val dinnerCheck: LiveData<Boolean> get() = _dinnerCheck
 
-    val gradeMeals = MutableLiveData<ArrayList<GradeMealData>>(ArrayList(4))
+    val gradeMeals = MutableLiveData(HashMap<Int, GradeMealData>())
 
     val editGrade = MutableLiveData<Int>()
 
-    lateinit var repeat: Int
+    private var repeat by Delegates.notNull<Int>()
 
     fun loadSchoolType() {
         val schoolName = sharedPreferenceStorage.getInfo("school_name")
@@ -52,8 +53,6 @@ class SettingMealViewModel(
         } else {
             3
         }
-        val gradeMeal = GradeMealData("", "", "")
-        gradeMeals.value?.add(gradeMeal)
         for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
             val breakfast = "아침: " + sharedPreferenceStorage.getInfo(breakfastContent)
@@ -65,42 +64,42 @@ class SettingMealViewModel(
             val dinner = "저녁: " + sharedPreferenceStorage.getInfo(dinnerContent)
 
             val gradeMeal = GradeMealData(breakfast, lunch, dinner)
-            gradeMeals.value?.add(ct, gradeMeal)
+            gradeMeals.value?.put(ct, gradeMeal)
         }
     }
 
-    private fun saveMeals(){
-        val repeat: Int = if (isElementSchool.value!!) {
-            6
-        } else {
-            3
-        }
-        for(ct in 1..repeat){
+    private fun saveMeals() {
+        for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
-            gradeMeals.value?.get(ct)
-                ?.let { sharedPreferenceStorage.saveInfo(it.breakfast,breakfastContent) }
+            sharedPreferenceStorage.saveInfo(
+                gradeMeals.value!![ct]?.breakfast ?: "",
+                breakfastContent
+            )
 
             val lunchContent = "lunch$ct"
-            gradeMeals.value?.get(ct)
-                ?.let { sharedPreferenceStorage.saveInfo(it.lunch,lunchContent) }
+            sharedPreferenceStorage.saveInfo(gradeMeals.value!![ct]?.lunch ?: "", lunchContent)
 
             val dinnerContent = "dinner$ct"
-            gradeMeals.value?.get(ct)
-                ?.let { sharedPreferenceStorage.saveInfo(it.dinner,dinnerContent) }
+            sharedPreferenceStorage.saveInfo(gradeMeals.value!![ct]?.dinner ?: "", dinnerContent)
         }
     }
 
-    private fun sendMealData(){
+    private fun sendMealData() {
         val accessToken = sharedPreferenceStorage.getInfo("access_token")
-        for(grade in 1..repeat){
+        for (grade in 1..repeat) {
             val meal = gradeMeals.value?.get(grade)
-            val request = SetMealTimeRequest(grade,meal?.breakfast?:"00:00:00",meal?.lunch?:"00:00:00",meal?.dinner?:"00:00:00")
-            settingApiImpl.setMealTime(accessToken, request).subscribe { response->
-                if(response.code()==204){
+            val request = SetMealTimeRequest(
+                grade,
+                meal?.breakfast ?: "00:00:00",
+                meal?.lunch ?: "00:00:00",
+                meal?.dinner ?: "00:00:00"
+            )
+            settingApiImpl.setMealTime(accessToken, request).subscribe { response ->
+                if (response.code() == 204) {
                     _toastMessage.value = "업데이트 하였습니다"
                     saveMeals()
 
-                }else{
+                } else {
                     _toastMessage.value = "오류가 발생하였습니다"
                 }
             }
@@ -108,11 +107,11 @@ class SettingMealViewModel(
 
     }
 
-    fun onDoneSetting(){
+    fun onDoneSetting() {
         sendMealData()
     }
 
-    fun editGrade(grade:Int){
+    fun editGrade(grade: Int) {
         editGrade.value = grade
     }
 

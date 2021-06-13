@@ -21,6 +21,10 @@ class SettingMealFragment :
 
     private var grade = 0
 
+    private val BREAKFAST = 1
+    private val LUNCH = 2
+    private val DINNER = 3
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
@@ -72,8 +76,8 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).breakfast =
-                SimpleDateFormat("HH:mm:00").format(calendar.time)
+            val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
+            setMealTimeView(time,BREAKFAST)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -82,8 +86,8 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).lunch =
-                SimpleDateFormat("HH:mm:00").format(calendar.time)
+            val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
+            setMealTimeView(time,LUNCH)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -92,8 +96,26 @@ class SettingMealFragment :
             val calendar = Calendar.getInstance()
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
-            (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).dinner =
-                SimpleDateFormat("HH:mm:00").format(calendar.time)
+            val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
+            setMealTimeView(time,DINNER)
         }
+
+    private fun setMealTimeView(time:String,type:Int){
+        if(vm.gradeMeals.value!![grade] ==null){
+            vm.gradeMeals.value!![grade] = GradeMealData("00:00:00","00:00:00","00:00:00")
+        }
+
+        when(type){
+            BREAKFAST->{
+                vm.gradeMeals.value!![grade]!!.breakfast = "아침: $time"
+            }
+            LUNCH->{
+                vm.gradeMeals.value!![grade]!!.lunch = "점심: $time"
+            }
+            DINNER->{
+                vm.gradeMeals.value!![grade]!!.dinner = "저녁: $time"
+            }
+        }
+    }
 
 }
