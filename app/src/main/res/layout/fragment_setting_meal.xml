@@ -2,8 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.semicolon.gspass_android_pad.viewmodel.setting.SettingMealViewModel" />
@@ -12,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/signup_top_gl2"
             android:layout_width="wrap_content"
@@ -32,6 +36,7 @@
             android:layout_height="1dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline52"
             android:layout_width="wrap_content"
@@ -72,8 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
-                    android:onClick="@{()->vm.editGrade(1)}">
+                    android:onClick="@{()->vm.editGrade(1)}"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/grade_1_v"
@@ -124,8 +129,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
-                    android:onClick="@{()->vm.editGrade(2)}">
+                    android:onClick="@{()->vm.editGrade(2)}"
+                    android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_2_v"
@@ -135,7 +140,7 @@
                         android:text="@string/grade_2"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        app:drawableEndCompat="@drawable/ic_baseline_edit_24"/>
+                        app:drawableEndCompat="@drawable/ic_baseline_edit_24" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_2_breakfast"
@@ -176,8 +181,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
-                    android:onClick="@{()->vm.editGrade(3)}">
+                    android:onClick="@{()->vm.editGrade(3)}"
+                    android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_3_v"
@@ -187,7 +192,7 @@
                         android:text="@string/grade_3"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        app:drawableEndCompat="@drawable/ic_baseline_edit_24"/>
+                        app:drawableEndCompat="@drawable/ic_baseline_edit_24" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_3_breakfast"
@@ -228,8 +233,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
                     android:onClick="@{()->vm.editGrade(4)}"
+                    android:orientation="vertical"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -240,7 +245,7 @@
                         android:text="@string/grade_4"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        app:drawableEndCompat="@drawable/ic_baseline_edit_24"/>
+                        app:drawableEndCompat="@drawable/ic_baseline_edit_24" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_4_breakfast"
@@ -281,8 +286,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
                     android:onClick="@{()->vm.editGrade(5)}"
+                    android:orientation="vertical"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -293,7 +298,7 @@
                         android:text="@string/grade_5"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        app:drawableEndCompat="@drawable/ic_baseline_edit_24"/>
+                        app:drawableEndCompat="@drawable/ic_baseline_edit_24" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_5_breakfast"
@@ -334,8 +339,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
                     android:background="@drawable/shape_bold_box"
-                    android:orientation="vertical"
                     android:onClick="@{()->vm.editGrade(6)}"
+                    android:orientation="vertical"
                     android:visibility="@{vm.isElementSchool?View.VISIBLE:View.GONE}">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -346,7 +351,7 @@
                         android:text="@string/grade_6"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        app:drawableEndCompat="@drawable/ic_baseline_edit_24"/>
+                        app:drawableEndCompat="@drawable/ic_baseline_edit_24" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/grade_6_breakfast"
@@ -409,11 +414,11 @@
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/complete"
-            android:textSize="25sp"
-            android:textColor="@color/white"
             android:background="@drawable/shape_border_purple"
             android:onClick="@{()->vm.onDoneSetting()}"
+            android:text="@string/complete"
+            android:textColor="@color/white"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline32"
             app:layout_constraintStart_toStartOf="@+id/signup_top_gl2"

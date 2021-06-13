@@ -77,7 +77,7 @@ class SettingMealFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
-            setMealTimeView(time,BREAKFAST)
+            setMealTimeView(time, BREAKFAST)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -87,7 +87,7 @@ class SettingMealFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
-            setMealTimeView(time,LUNCH)
+            setMealTimeView(time, LUNCH)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -97,22 +97,22 @@ class SettingMealFragment :
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
             calendar.set(Calendar.MINUTE, minute)
             val time = SimpleDateFormat("HH:mm:00").format(calendar.time)
-            setMealTimeView(time,DINNER)
+            setMealTimeView(time, DINNER)
         }
 
-    private fun setMealTimeView(time:String,type:Int){
-        if(vm.gradeMeals.value!![grade] ==null){
-            vm.gradeMeals.value!![grade] = GradeMealData("00:00:00","00:00:00","00:00:00")
+    private fun setMealTimeView(time: String, type: Int) {
+        if (vm.gradeMeals.value!![grade] == null) {
+            vm.gradeMeals.value!![grade] = GradeMealData("00:00:00", "00:00:00", "00:00:00")
         }
 
-        when(type){
-            BREAKFAST->{
+        when (type) {
+            BREAKFAST -> {
                 vm.gradeMeals.value!![grade]!!.breakfast = "아침: $time"
             }
-            LUNCH->{
+            LUNCH -> {
                 vm.gradeMeals.value!![grade]!!.lunch = "점심: $time"
             }
-            DINNER->{
+            DINNER -> {
                 vm.gradeMeals.value!![grade]!!.dinner = "저녁: $time"
             }
         }
