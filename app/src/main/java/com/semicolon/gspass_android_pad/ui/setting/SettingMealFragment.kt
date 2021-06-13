@@ -74,7 +74,6 @@ class SettingMealFragment :
             calendar.set(Calendar.MINUTE, minute)
             (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).breakfast =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
-            vm.sendMealData(grade)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -85,7 +84,6 @@ class SettingMealFragment :
             calendar.set(Calendar.MINUTE, minute)
             (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).lunch =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
-            vm.sendMealData(grade)
         }
 
     @SuppressLint("SimpleDateFormat")
@@ -96,7 +94,6 @@ class SettingMealFragment :
             calendar.set(Calendar.MINUTE, minute)
             (vm.gradeMeals.value?.get(grade)?: GradeMealData("00:00:00","00:00:00","00:00:00")).dinner =
                 SimpleDateFormat("HH:mm:00").format(calendar.time)
-            vm.sendMealData(grade)
         }
 
 }

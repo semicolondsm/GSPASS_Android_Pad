@@ -413,7 +413,7 @@
             android:textSize="25sp"
             android:textColor="@color/white"
             android:background="@drawable/shape_border_purple"
-            android:onClick="@{()->vm.backPressed()}"
+            android:onClick="@{()->vm.onDoneSetting()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline32"
             app:layout_constraintStart_toStartOf="@+id/signup_top_gl2"

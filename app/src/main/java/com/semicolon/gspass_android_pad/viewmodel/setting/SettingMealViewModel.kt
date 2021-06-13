@@ -35,6 +35,8 @@ class SettingMealViewModel(
 
     val editGrade = MutableLiveData<Int>()
 
+    lateinit var repeat: Int
+
     fun loadSchoolType() {
         val schoolName = sharedPreferenceStorage.getInfo("school_name")
         _isElementSchool.value = schoolName.contains("초등학교")
@@ -45,7 +47,7 @@ class SettingMealViewModel(
     }
 
     private fun loadMeals() {
-        val repeat: Int = if (isElementSchool.value!!) {
+        repeat = if (isElementSchool.value!!) {
             6
         } else {
             3
@@ -88,19 +90,26 @@ class SettingMealViewModel(
         }
     }
 
-    fun sendMealData(grade: Int){
+    private fun sendMealData(){
         val accessToken = sharedPreferenceStorage.getInfo("access_token")
-        val meal = gradeMeals.value?.get(grade)
-        val request = SetMealTimeRequest(grade,meal?.breakfast?:"00:00:00",meal?.lunch?:"00:00:00",meal?.dinner?:"00:00:00")
-        settingApiImpl.setMealTime(accessToken, request).subscribe { response->
-            if(response.code()==204){
-                _toastMessage.value = "업데이트 하였습니다"
-                saveMeals()
+        for(grade in 1..repeat){
+            val meal = gradeMeals.value?.get(grade)
+            val request = SetMealTimeRequest(grade,meal?.breakfast?:"00:00:00",meal?.lunch?:"00:00:00",meal?.dinner?:"00:00:00")
+            settingApiImpl.setMealTime(accessToken, request).subscribe { response->
+                if(response.code()==204){
+                    _toastMessage.value = "업데이트 하였습니다"
+                    saveMeals()
 
-            }else{
-                _toastMessage.value = "오류가 발생하였습니다"
+                }else{
+                    _toastMessage.value = "오류가 발생하였습니다"
+                }
             }
         }
+
+    }
+
+    fun onDoneSetting(){
+        sendMealData()
     }
 
     fun editGrade(grade:Int){
