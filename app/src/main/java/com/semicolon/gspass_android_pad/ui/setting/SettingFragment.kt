@@ -17,10 +17,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.vm = vm
-        vm.loadSettings()
         observeApplySetting()
         observeMealSetting()
         startQrCode()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        vm.loadSettings()
     }
 
     private fun observeApplySetting(){

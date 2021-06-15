@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -40,8 +39,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            app:boxBackgroundColor="@android:color/transparent"
             android:background="@android:color/transparent"
+            app:boxBackgroundColor="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/signup_top_gl"
             app:layout_constraintTop_toBottomOf="@+id/login_title_tv">
@@ -53,7 +52,7 @@
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:drawablePadding="10dp"
                 android:hint="@string/please_email"
-                android:text="@={vm.userId}"/>
+                android:text="@={vm.userId}" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -63,8 +62,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:boxBackgroundColor="@android:color/transparent"
             android:background="@android:color/transparent"
+            app:boxBackgroundColor="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/signup_top_gl"
             app:layout_constraintTop_toBottomOf="@+id/login_email_layout"
@@ -77,9 +76,9 @@
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="16dp"
                 android:hint="@string/please_password"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:text="@={vm.userPassword}"
-                android:imeOptions="actionDone"/>
+                android:text="@={vm.userPassword}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

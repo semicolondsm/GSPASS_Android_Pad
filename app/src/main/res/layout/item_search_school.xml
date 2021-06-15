@@ -2,19 +2,23 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="model"
             type="com.semicolon.gspass_android_pad.model.GetSchoolResponse" />
+
         <variable
             name="vm"
             type="com.semicolon.gspass_android_pad.viewmodel.login.AddSchoolViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{()->vm.chooseSchool(model)}"
-        android:background="?attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{()->vm.chooseSchool(model)}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_school_name_tv"
