@@ -68,6 +68,11 @@ class SettingMealViewModel(
         }
     }
 
+    fun saveMeal(grade: Int, type: String, time: String) {
+        val content = "$type$grade"
+        sharedPreferenceStorage.saveInfo(time, content)
+    }
+
     private fun saveMeals() {
         for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
@@ -97,11 +102,10 @@ class SettingMealViewModel(
             settingApiImpl.setMealTime(accessToken, request).subscribe { response ->
                 if (response.code() == 204) {
                     _toastMessage.value = "업데이트 하였습니다"
-                    saveMeals()
-
                 } else {
                     _toastMessage.value = "오류가 발생하였습니다"
                 }
+                saveMeals()
             }
         }
 

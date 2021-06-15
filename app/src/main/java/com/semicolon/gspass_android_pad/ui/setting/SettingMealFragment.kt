@@ -107,15 +107,19 @@ class SettingMealFragment :
 
         when (type) {
             BREAKFAST -> {
-                vm.gradeMeals.value!![grade]!!.breakfast = "아침: $time"
+                vm.gradeMeals.value!![grade]!!.breakfast = time
+                vm.saveMeal(grade, "breakfast", time)
             }
             LUNCH -> {
-                vm.gradeMeals.value!![grade]!!.lunch = "점심: $time"
+                vm.gradeMeals.value!![grade]!!.lunch = time
+                vm.saveMeal(grade, "lunch", time)
             }
             DINNER -> {
-                vm.gradeMeals.value!![grade]!!.dinner = "저녁: $time"
+                vm.gradeMeals.value!![grade]!!.dinner = time
+                vm.saveMeal(grade, "dinner", time)
             }
         }
+        vm.loadSchoolType()
     }
 
 }
