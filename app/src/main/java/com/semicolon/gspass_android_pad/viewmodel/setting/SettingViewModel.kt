@@ -36,8 +36,8 @@ class SettingViewModel(
     private val _isElementSchool = MutableLiveData(false)
     val isElementSchool: LiveData<Boolean> get() = _isElementSchool
 
-    private val _mealTimes = MutableLiveData<ArrayList<GradeMealData>>()
-    val mealTimes: LiveData<ArrayList<GradeMealData>> get() = _mealTimes
+    private val _mealTimes = MutableLiveData(HashMap<Int, GradeMealData>())
+    val mealTimes: LiveData<HashMap<Int, GradeMealData>> get() = _mealTimes
 
     private val _schoolName = MutableLiveData<String>()
     val schoolName: LiveData<String> get() = _schoolName
@@ -76,7 +76,7 @@ class SettingViewModel(
     }
 
     private fun loadMealSetting() {
-        val repeat: Int = if (isElementSchool.value!!) {
+        val repeat = if (isElementSchool.value!!) {
             6
         } else {
             3
@@ -92,7 +92,7 @@ class SettingViewModel(
             val dinner = "저녁: " + sharedPreferenceStorage.getInfo(dinnerContent)
 
             val gradeMeal = GradeMealData(breakfast, lunch, dinner)
-            _mealTimes.value?.set(ct, gradeMeal)
+            _mealTimes.value?.put(ct, gradeMeal)
         }
     }
 

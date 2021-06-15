@@ -55,13 +55,13 @@ class SettingMealViewModel(
         }
         for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
-            val breakfast = "아침: " + sharedPreferenceStorage.getInfo(breakfastContent)
+            val breakfast = sharedPreferenceStorage.getInfo(breakfastContent)
 
             val lunchContent = "lunch$ct"
-            val lunch = "점심: " + sharedPreferenceStorage.getInfo(lunchContent)
+            val lunch = sharedPreferenceStorage.getInfo(lunchContent)
 
             val dinnerContent = "dinner$ct"
-            val dinner = "저녁: " + sharedPreferenceStorage.getInfo(dinnerContent)
+            val dinner = sharedPreferenceStorage.getInfo(dinnerContent)
 
             val gradeMeal = GradeMealData(breakfast, lunch, dinner)
             gradeMeals.value?.put(ct, gradeMeal)
@@ -87,10 +87,12 @@ class SettingMealViewModel(
             val dinnerContent = "dinner$ct"
             sharedPreferenceStorage.saveInfo(gradeMeals.value!![ct]?.dinner ?: "", dinnerContent)
         }
+        _back.value = true
     }
 
     private fun sendMealData() {
         val accessToken = sharedPreferenceStorage.getInfo("access_token")
+        var error = false
         for (grade in 1..repeat) {
             val meal = gradeMeals.value?.get(grade)
             val request = SetMealTimeRequest(
@@ -100,15 +102,18 @@ class SettingMealViewModel(
                 meal?.dinner ?: "00:00:00"
             )
             settingApiImpl.setMealTime(accessToken, request).subscribe { response ->
-                if (response.code() == 204) {
-                    _toastMessage.value = "업데이트 하였습니다"
-                } else {
-                    _toastMessage.value = "오류가 발생하였습니다"
+                if (response.code() != 204) {
+                    error = true
                 }
-                saveMeals()
+
             }
         }
-
+        if(error){
+            _toastMessage.value = "오류가 발생하였습니다"
+        }else{
+            _toastMessage.value = "업데이트 하였습니다"
+        }
+        saveMeals()
     }
 
     fun onDoneSetting() {
