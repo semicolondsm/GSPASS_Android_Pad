@@ -119,7 +119,7 @@ class SettingMealFragment :
                 vm.saveMeal(grade, "dinner", time)
             }
         }
-        vm.loadSchoolType()
+        vm.loadMeals(grade)
     }
 
 }

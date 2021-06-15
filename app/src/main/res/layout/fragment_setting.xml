@@ -134,7 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="@{vm.mealTimes[1].breakfast}"
+                        android:text="아"
                         android:visibility="@{vm.breakFastBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -142,7 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="@{vm.mealTimes[1].lunch}"
+                        android:text="점"
                         android:visibility="@{vm.lunchBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
 
@@ -150,7 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="@{vm.mealTimes[1].dinner}"
+                        android:text="저녁"
                         android:visibility="@{vm.dinnerBool?View.VISIBLE:View.GONE}"
                         tools:text="00시00분" />
                 </LinearLayout>

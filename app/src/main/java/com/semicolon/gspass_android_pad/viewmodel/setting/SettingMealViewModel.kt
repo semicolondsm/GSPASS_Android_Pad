@@ -44,15 +44,15 @@ class SettingMealViewModel(
         _breakFastCheck.value = sharedPreferenceStorage.getInfo("break_fast_check", false)
         _lunchCheck.value = sharedPreferenceStorage.getInfo("launch_check", false)
         _dinnerCheck.value = sharedPreferenceStorage.getInfo("dinner_check", false)
-        loadMeals()
-    }
-
-    private fun loadMeals() {
         repeat = if (isElementSchool.value!!) {
             6
         } else {
             3
         }
+        loadMeals(repeat)
+    }
+
+    fun loadMeals(repeat: Int) {
         for (ct in 1..repeat) {
             val breakfastContent = "breakfast$ct"
             val breakfast = sharedPreferenceStorage.getInfo(breakfastContent)
@@ -108,9 +108,9 @@ class SettingMealViewModel(
 
             }
         }
-        if(error){
+        if (error) {
             _toastMessage.value = "오류가 발생하였습니다"
-        }else{
+        } else {
             _toastMessage.value = "업데이트 하였습니다"
         }
         saveMeals()
