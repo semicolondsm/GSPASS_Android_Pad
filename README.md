@@ -7,7 +7,7 @@
 * [GSPASS_BackEnd](https://github.com/semicolonDSM/GSPASS_BACKEND)
 * [GSPASS_IOS](https://github.com/semicolonDSM/GSPASS_iOS)
 * [GSPASS_ANDROID](https://github.com/semicolonDSM/GSPASS_Android)
-## 실행환경
+## 개발환경
 * Android Studio
 ## 언어
 * Kotlin
